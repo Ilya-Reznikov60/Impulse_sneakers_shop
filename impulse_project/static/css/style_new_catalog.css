@@ -1,0 +1,342 @@
+.breadcrumbs~.catalog {
+    padding-top: 0;
+}
+
+.catalog {
+    padding-top: 30px;
+    padding-bottom: 100px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.catalog-new__columns {
+    display: flex;
+}
+
+.catalog-new__column--sidebar {
+    width: 224px;
+    margin-right: 56px;
+    flex-shrink: 0;
+}
+
+.catalog-filters__box {
+    border-top: 1px solid #e1e0de;
+}
+
+.catalog-filters__box-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 16px 40px 16px 0;
+    margin: 0;
+    position: relative;
+    user-select: none;
+    font-weight: 600;
+    color: #929292;
+    cursor: pointer;
+}
+
+.catalog-filters__box--open .catalog-filters__box-title:after {
+    transform: rotate(-180deg);
+}
+
+.catalog-filters__box-title:after {
+    content: "";
+    width: 0.875rem;
+    height: 0.5rem;
+    margin-top: -0.3125rem;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    display: inline-block;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDE0IDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xMyAxTDcgN0wxIDAuOTk5OTk5IiBzdHJva2U9IiM5MjkyOTIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K);
+    opacity: .6;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: contain;
+    transform: rotate(0);
+    transition: opacity .2s ease, transform .2s ease;
+}
+
+.catalog-filters__box--open .catalog-filters__box-content {
+    display: block;
+}
+
+.catalog-filters__box-content {
+    padding-bottom: 20px;
+    display: none;
+    position: relative;
+}
+
+.catalog-filters__box-list:last-child {
+    margin-bottom: 0;
+}
+
+.catalog-filters__box-list:first-child {
+    margin-top: -2px;
+}
+
+.catalog-filters__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+
+.catalog-filters__box-list-item {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.catalog-filters__box-link {
+    font-size: 0.9rem;
+    transition: color .2s ease;
+}
+
+.catalog-filters__count {
+    color: #929292;
+}
+
+.catalog-filters {
+    position: relative;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.catalog-item {
+    display: block;
+}
+
+.catalog-new__column--mainpage {
+    min-width: 0;
+    flex: 1;
+}
+
+.new-products-carts__list {
+    margin-left: -1rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.catalog .catalog-card__item {
+    width: 33.33333%;
+    margin-bottom: 35px;
+}
+
+.catalog-card__item {
+    padding-left: 1rem;
+}
+
+.catalog-card {
+    position: relative;
+    color: #000;
+    transition: color .2s ease;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.catalog .catalog-card-image {
+    margin-bottom: 12px;
+}
+
+.catalog-card-image {
+    margin-bottom: 1.125rem;
+    position: relative;
+    border-radius: 0.3125rem;
+    overflow: hidden;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-color: #e1e1e1;
+    background-size: cover;
+}
+
+.catalog-card-image__inner {
+    padding-top: 98.99958%;
+    transition: opacity .2s ease;
+}
+
+.catalog-card-image picture {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+}
+
+.catalog-card-image img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+
+.image-wrapper-new {
+    transition: opacity .4s ease;
+}
+
+.catalog-card__labels--top--left {
+    top: 12px;
+    left: 12px;
+}
+
+.catalog-card__labels {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.catalog .catalog-card-label {
+    padding: 4px 11px 5px;
+    font-size: 11px;
+    letter-spacing: 0;
+}
+
+.catalog-card__labels .catalog-card-label {
+    margin-bottom: 4px;
+    flex-shrink: 0;
+}
+
+.catalog-card-label--new {
+    background-color: red;
+}
+
+.catalog-card-label {
+    padding: 3px 6px;
+    position: relative;
+    display: inline-block;
+    z-index: 2;
+    color: #f4f4f4;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: normal;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+}
+
+.catalog-card__labels--top--right {
+    top: 12px;
+    right: 12px;
+}
+
+.catalog-card-label--favorite {
+    padding: 6px;
+}
+
+.catalog-card-label--favorite {
+    background-color: #ffcc00;
+    padding: 6px;
+}
+
+.catalog-card-label--favorite:hover {
+    cursor: pointer;
+    scale: 1.1;
+}
+
+.catalog-card-label--favorite i:hover {
+    color: #ff0000; /* Красный цвет */
+}
+
+.catalog-card__hover {
+    margin-top: 2px;
+    position: absolute;
+    display: none;
+    opacity: 0;
+    background-color: #fff;
+    color: #000;
+    transition: opacity .2s ease;
+}
+
+.catalog-card__hover {
+    z-index: 5;
+}
+
+.catalog .catalog-card-title {
+    margin-bottom: 5px;
+}
+
+.catalog-card-title {
+    margin: 0 0 0.375rem;
+    margin-left: 0.5rem;
+    opacity: 1;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    transition: opacity .2s ease;
+}
+
+.catalog-card-link__area {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.catalog-card-price {
+    opacity: 1;
+    color: #000;
+    font-weight: 700;
+    font-size: 1.0625rem;
+    line-height: 1.0625rem;
+    transition: opacity .2s ease;
+    padding-bottom: 0.5rem;
+}
+
+.catalog-card-price-value {
+    margin-right: 0.625rem;
+    margin-left: 0.5rem;
+}
+
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.pagination .pagination {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.pagination .pagination .pagination-links {
+    margin-bottom: 0;
+}
+
+.pagination .pagination-links {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px;
+    border-radius: 4px;
+}
+
+.pagination .pagination-links li {
+    display: inline;
+}
+
+.pagination .pagination-links li a {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .catalog-new__column--sidebar {
+        display: none;
+    }
+    .catalog-filters__box--open {
+        display: block;
+    }
+}

@@ -1,0 +1,20 @@
+.links .links-sale--active {
+    border-bottom: 1.5px solid red;
+}
+
+.catalog-card-price-value--old {
+    color: #929292;
+    font-size: .875rem;
+    text-decoration: line-through;
+    font-weight: 400;
+}
+
+.catalog-card-price-value__sale {
+    margin-right: 0.625rem;
+}
+
+.commerce-product-price.sale {
+    color: #929292;
+    text-decoration: line-through;
+    font-weight: 400;
+}
