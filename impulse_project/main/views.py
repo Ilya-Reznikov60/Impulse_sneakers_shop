@@ -6,11 +6,20 @@ def index(request):
     '''
     Index function
     '''
-    return render(request, 'index.html',)
+    context = {
+        'title': 'Impulse - Главная'
+    }
+
+    return render(request, 'index.html', context)
 
 
 def about(request):
     '''
     about function
     '''
-    return render(request, 'about.html',)
+    context = {
+        'title': 'Impulse - О нас',
+        'is_about_page': True,
+    }
+
+    return render(request, 'about.html', context)
