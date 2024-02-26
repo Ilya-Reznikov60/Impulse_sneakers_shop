@@ -12,7 +12,7 @@
     <div class="container category-page">
         <ol class="breadcrumbs" itemscope="">
             <li class="breadcrumbs__item" itemprop="itemListElement" itemscope="">
-                <a class="breadcrumbs__link" itemprop="item" href="/">
+                <a class="breadcrumbs__link" itemprop="item" href="{% url "main:index" %}">
                     <span itemprop="name">
                         Главная
                     </span>
@@ -50,7 +50,7 @@
                             <a href="privacy_policy.html">Политика конфиденциальности</a>
                         </li>
                         <li class="current_page_item page-info__menu-item">
-                            <a href="about.html">О нас</a>
+                            <a href="{% url "main:about" %}">О нас</a>
                         </li>
                     </ul>
                 </nav>
@@ -61,7 +61,7 @@
                         <option value="contacts.html">Контакты</option>
                         <option value="questions.html">Вопросы</option>
                         <option value="privacy_policy.html">Политика конфиденциальности</option>
-                        <option value="about.html" selected>О нас</option>
+                        <option value="{% url "main:about" %}" selected>О нас</option>
                     </select>
                 </nav>
             </div>
