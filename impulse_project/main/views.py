@@ -13,4 +13,4 @@ def about(request):
     '''
     about function
     '''
-    return HttpResponse('About Page')
+    return render(request, 'about.html',)

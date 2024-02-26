@@ -1,0 +1,252 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impulse</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static "css/style_one.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_body.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_footer.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_news.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_new.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_new_catalog.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_information.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_contacts.css" %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static "favicon/apple-touch-icon.png" %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static "favicon/favicon-32x32.png" %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static "favicon/favicon-16x16.png" %}">
+    <link rel="manifest" href="{% static "favicon/site.webmanifest" %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo"><a href="index.html">Impulse</a></div>
+            <ul class="links">
+                <li class="information-link"><a href="information.html">Информация</a></li>
+                <li><a href="new_items.html">Новинки</a></li>
+                <li><a href="catalog.html">Каталог</a>
+                    <div class="mega-menu">
+                        <div class="mega-menu-content">
+                            <ul class="menu-list">
+                                <li class="menu-item">
+                                    <a href="#">Кроссовки</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Кеды</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Зимняя обувь</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Сланцы</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="sale.html" class="links-sale">Распродажа</a></li>
+            </ul>
+            <form class="search-form">
+                <input type="text" placeholder="Искать здесь...">
+                <button type="submit"></button>
+            </form>
+            <div class="cart-icon">
+                <a href="cart"><i class="fa-solid fa-shopping-cart"></i></a>
+            </div>
+            <div class="favorite-icon">
+                <a href="favorite"><i class="fa-solid fa-heart"></i></a>
+            </div>
+            <div class="profile-icon">
+                <a href="login"><i class="fa-solid fa-user"></i></a>
+            </div>
+            <div class="toggle_button">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+        <div class="dropdown_menu">
+            <li><a href="information.html">Информация</a></li>
+            <li><a href="new_items.html">Новинки</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="sale.html">Распродажа</a></li>
+            <li>
+                <form class="search-form">
+                    <input type="text" placeholder="Искать здесь...">
+                    <button type="submit"></button>
+                </form>
+            </li>
+        </div>
+    </header>
+
+    <div class="container category-page">
+        <ol class="breadcrumbs" itemscope="">
+            <li class="breadcrumbs__item" itemprop="itemListElement" itemscope="">
+                <a class="breadcrumbs__link" itemprop="item" href="/">
+                    <span itemprop="name">
+                        Главная
+                    </span>
+                </a>
+                <meta itemprop="position" content="1">
+            </li>
+            <li class="breadcrumbs__item" itemprop="itemListElement" itemscope="">
+                <span itemprop="item" content="isnew">
+                    <span itemprop="name">
+                        Информация
+                    </span>
+                </span>
+                <meta itemprop="position" content="2">
+            </li>
+        </ol>
+        <div class="category-page-header">
+            <div class="page-header-left">
+                <h2 class="page-header-title">Информация</h2>
+            </div>
+        </div>
+        <div class="page-info__box">
+            <div class="page-info__menu">
+                <nav class="desktop-menu">
+                    <ul id="menu-information" class="page-info__menu">
+                        <li class="page-info__menu-item">
+                            <a href="information.html">Доставка и оплата</a>
+                        </li>
+                        <li class="page-info__menu-item">
+                            <a href="contacts.html">Контакты</a>
+                        </li>
+                        <li class="page-info__menu-item">
+                            <a href="questions.html">Вопросы</a>
+                        </li>
+                        <li class="page-info__menu-item">
+                            <a href="privacy_policy.html">Политика конфиденциальности</a>
+                        </li>
+                        <li class="current_page_item page-info__menu-item">
+                            <a href="about.html">О нас</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="mobile-menu">
+                    <select onchange="location = this.value;">
+                        <option value selected>О нас</option>
+                        <option value="information.html">Доставка и оплата</option>
+                        <option value="contacts.html">Контакты</option>
+                        <option value="questions.html">Вопросы</option>
+                        <option value="privacy_policy.html">Политика конфиденциальности</option>
+                        <option value="about.html" selected>О нас</option>
+                    </select>
+                </nav>
+            </div>
+            <div class="page-info__content">
+                <h3 class="info__content-title"> О нас </h3>
+                <div class="info__content-text">
+                    <h4 class="info__content-text__serios">Impulse: Одежда, которая вдохновляет</h4>
+                    <p>Impulse - это интернет-магазин одежды, который предлагает широкий ассортимент стильной и
+                        качественной одежды для мужчин и женщин. Мы верим, что одежда - это не просто способ прикрыть
+                        тело, а способ выразить себя и свой индивидуальный стиль. Мы стремимся предоставить нашим
+                        клиентам одежду, которая не только будет хорошо выглядеть, но и будет удобной и практичной.
+                    </p>
+                    <p>
+                        В нашем магазине вы найдете одежду для любого случая: от повседневных нарядов до вечерних
+                        платьев. Мы предлагаем одежду различных стилей, от классического до современного, чтобы каждый
+                        мог найти что-то для себя. Мы также следим за последними тенденциями моды, чтобы наши клиенты
+                        всегда были в курсе самых актуальных новинок.
+                    </p>
+                    <p>
+                        Мы сотрудничаем только с надежными поставщиками, которые гарантируют высокое качество своей
+                        продукции. Вся одежда в нашем магазине изготовлена из качественных материалов и пошита с
+                        использованием современных технологий. Мы тщательно проверяем каждый товар перед отправкой,
+                        чтобы убедиться, что он соответствует нашим высоким стандартам качества.
+                    </p>
+                    <p>
+                        Мы предлагаем нашим клиентам удобные способы оплаты и быструю доставку. Вы можете оплатить свой
+                        заказ банковской картой, электронным кошельком или наличными при получении. Мы доставляем заказы
+                        по всей России, а также в страны СНГ.
+                    </p>
+                    <p>
+                        Мы всегда рады помочь нашим клиентам с выбором одежды. Если у вас есть какие-либо вопросы, вы
+                        можете связаться с нами по телефону, электронной почте или через форму обратной связи на нашем
+                        сайте. Мы с удовольствием ответим на все ваши вопросы и поможем вам подобрать одежду, которая
+                        идеально подойдет вам по стилю и размеру.
+                    </p>
+                    <h4 class="info__content-text__serios">
+                        Impulse - это не просто интернет-магазин одежды, это место, где вы можете найти свой уникальный стиль и выразить свою индивидуальность.
+                    </h4>
+                    <p>
+                        P.S. Проект разработан командой из 1-ого человека <a href="https://github.com/Ilya-Reznikov60">(Мой Github)</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-container">
+                <div class="col contact">
+                    <p>
+                        <a href="index.html" class="logo">Impulse</a>
+                    </p>
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i> 125 Lenina Street, Krasnodar
+                    </p>
+                    <p>
+                        <i class="fa-solid fa-envelope"></i><a href="mailto:example@google.com">example@google.com</a>
+                    </p>
+                    <p>
+                        <i class="fa-solid fa-phone-volume"></i> 240-799-9093
+                    </p>
+                    <div class="social_media_links">
+                        <a href="http://vk.com" target="_blank">
+                            <i class="fa-brands fa-vk"></i>
+                        </a>
+                        <a href="http://github.com" target="_blank">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="http://t.me" target="_blank">
+                            <i class="fa-brands fa-telegram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col info">
+                    <h2>Информация</h2>
+                    <p>
+                        <a href="about.html">О нас</a>
+                    </p>
+                    <p>
+                        <a href="contacts.html">Контакты</a>
+                    </p>
+                    <p>
+                        <a href="questions.html">Вопросы</a>
+                    </p>
+                    <p>
+                        <a href="privacy_policy.html">Политика конфиденциальности</a>
+                    </p>
+                </div>
+                <div class="col newsletter">
+                    <h2>Подпишись на последние новости</h2>
+                    <form action="" class="newsletter-form">
+                        <input type="text" placeholder="Your Email">
+                        <button>Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">Copyright&copy;2024 Impulse</div>
+    </footer>
+</body>
+
+</html>
