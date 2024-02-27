@@ -1,0 +1,297 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/style_new.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_new_catalog.css" %}">
+    <link rel="stylesheet" href="{% static "ss/style_catalog.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_sale.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_product.css" %}">
+{% endblock %}
+
+{% block content %}
+<div class="container category-page">
+    <ol class="breadcrumbs" itemscope="">
+        <li class="breadcrumbs__item" itemprop="itemListElement" itemscope="">
+            <a class="breadcrumbs__link" itemprop="item" href="/">
+                <span itemprop="name">
+                    Главная
+                </span>
+            </a>
+            <meta itemprop="position" content="1">
+        </li>
+        <li class="breadcrumbs__item" itemprop="itemListElement" itemscope="">
+            <a class="breadcrumbs__link" itemprop="item" href="catalog.html">
+                <span itemprop="name">
+                    Каталог
+                </span>
+            </a>
+            <meta itemprop="position" content="2">
+        </li>
+        <li class="breadcrumbs__item" itemprop="itemListElement" itemscope="">
+            <span itemprop="item" content="isnew">
+                <span itemprop="name">
+                    New Balance 574
+                </span>
+            </span>
+            <meta itemprop="position" content="3">
+        </li>
+    </ol>
+</div>
+<div class="cd-main-container">
+    <main id="primary" class="product-page-container">
+        <section class="single-product-page container__wrap">
+            <div class="single-product-page__info">
+                <script>
+                    function zoom(e) {
+                        console.log(window.innerWidth)
+                        if (window.innerWidth > 992) {
+                            let zoomer = e.currentTarget;
+                            e.offsetX ? offsetX = e.offsetX : offsetX = e.touches[0].pageX
+                            e.offsetY ? offsetY = e.offsetY : offsetX = e.touches[0].pageX
+                            x = offsetX / zoomer.offsetWidth * 100
+                            y = offsetY / zoomer.offsetHeight * 100
+                            zoomer.style.backgroundPosition = x + '% ' + y + '%';
+                        }
+                    }
+
+                </script>
+                <div class="single-product-page__gallery module-lightbox">
+                    <img id="largeImage" src="{% static "image/New Balance 574.jpg" %}" alt="Large Image" class="large-image"
+                        onclick="showImage('{% static "image/New Balance 574.jpg" %}')">
+                    <div class="small-images">
+                        <img src="{% static "image/New Balance 574-two.jpg" %}" alt="Small Image 1" class="small-image"
+                            onclick="showImage('{% static "image/New Balance 574-two.jpg" %}')">
+                        <img src="{% static "image/New-Balance574-three.jpg" %}" alt="Small Image 2" class="small-image"
+                            onclick="showImage('{% static "image/New-Balance574-three.jpg" %}')">
+                        <img src="{% static "image/New Balance 574-four.jpg" %}" alt="Small Image 3" class="small-image"
+                            onclick="showImage('{% static "image/New Balance 574-four.jpg" %}')">
+                        <img src="{% static "image/New Balance 574-six.jpg" %}" alt="Small Image 4" class="small-image"
+                            onclick="showImage('{% static "image/New Balance 574-six.jpg" %}')">
+                    </div>
+                    <div id="imageModal" class="modal">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <img id="modalImage" class="modal-content">
+                    </div>
+                </div>
+                <div class="single-product-page__tabs"></div>
+            </div>
+            <div class="single-product-page__summary">
+                <div class="nb574-bg__summary">
+                    <div class="single-product-page__head"></div>
+                    <h2 class="single-product-page__title">
+                        Мужские Кроссовки New Balance 574
+                    </h2>
+                    <div class="single-product-page__box">
+                        <div class="single-product-page__price">
+                            <span class="commerce-product-price amount">
+                                18 990 руб.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="single-product-page__box2">
+                        <div class="single-product-page__colors-title">Доступные цвета:</div>
+                        <div class="single-product-page__colors">
+                            <a href="nb574_go.html" title class="single-product-page__color">
+                                <img src="{% static "image/109666270299.jpg" %}" class="ls-is-cached lazyloaded" alt="">
+                            </a>
+                        </div>
+                        <form class="variations_form cart" action="">
+                            <div class="label-size_box">
+                                <div class="label-size_text">
+                                    Выбор размера
+                                </div>
+                                <a href="/" target="_blank" class="label-size_link">
+                                    Таблица размеров
+                                </a>
+                            </div>
+                            <table class="variations" cellspasing="0" role="presentation">
+                                <tbody>
+                                    <tr>
+                                        <td class="value">
+                                            <div class="custom-variations-wrapper">
+                                                <button class="variation-button out-of-stock"
+                                                    data-variation-id="3801">
+                                                    <div class="variation-button-name">38</div>
+                                                </button>
+                                                <button class="variation-button" data-variation-id="3901">
+                                                    <div class="variation-button-name">39</div>
+                                                </button>
+                                                <button class="variation-button" data-variation-id="4001">
+                                                    <div class="variation-button-name">40</div>
+                                                </button>
+                                                <button class="variation-button" data-variation-id="4101">
+                                                    <div class="variation-button-name">41</div>
+                                                </button>
+                                                <button class="variation-button" data-variation-id="4201">
+                                                    <div class="variation-button-name">42</div>
+                                                </button>
+                                                <button class="variation-button" data-variation-id="4301">
+                                                    <div class="variation-button-name">43</div>
+                                                </button>
+                                                <button class="variation-button" data-variation-id="4401">
+                                                    <div class="variation-button-name">44</div>
+                                                </button>
+                                                <button class="variation-button" data-variation-id="4501">
+                                                    <div class="variation-button-name">45</div>
+                                                </button>
+                                                <button class="variation-button" data-variation-id="4601">
+                                                    <div class="variation-button-name">46</div>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                    <div class="single-product-page__buttons">
+                        <div class="single-product-page__add_to_cart" id="addToCartButton" data-id="6740"
+                            data-type="variable">
+                            Добавить в корзину
+                        </div>
+                        <a href="shopping_cart.html" class="single-product-page__view_cart"
+                            style="display: none;">Перейти в корзину</a>
+                        <div class="single-product-page__favorite">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                    <div class="single-product-page__text ft">
+                        <div class="single-product-description">
+                            Описание модели
+                        </div>
+                        <p>
+                            Одни из самых культовых и упоминаемых кроссовок New Balance 574 первоначально были
+                            разработаны для бега и обеспечивали повышенный комфорт. Было это в 1988 году и с тех пор
+                            они остаются популярными, приобрели влиятельный повседневный дизайн и неоднократно
+                            переиздавались.
+                        </p>
+                        <p>Артикул: VN0009QC6BT</p>
+                    </div>
+                    <div class="single-product-page__characteristics">
+                        <div class="characteristics-header">Характеристики</div>
+                        <div class="characteristics-content" style="display: none;">
+                            <p>Пол: Мужской</p>
+                            <p>Цвета: Чёрный / Серый</p>
+                            <p>Страна: Вьетнам</p>
+                            <p>Состав: Замша / Синтетика / Текстиль / Резина</p>
+                        </div>
+                    </div>
+
+                    <div class="single-product-page__delivery">
+                        <div class="delivery-header">Доставка</div>
+                        <div class="delivery-content" style="display: none;">
+                            <p>Доставка по Краснодарскому Краю. По всем вопросам обращаться по телефону</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+<script>
+    // Получаем все кнопки с классом "variation-button"
+    const buttons = document.querySelectorAll('.variation-button');
+
+    // Для каждой кнопки добавляем обработчик клика
+    buttons.forEach(button => {
+        button.addEventListener('click', function (event) {
+            event.preventDefault(); // Предотвращаем стандартное действие кнопки
+
+            // Удаляем класс "active" у всех кнопок
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Добавляем класс "active" только к текущей нажатой кнопке
+            this.classList.add('active');
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const outOfStockButtons = document.querySelectorAll('.variation-button.out-of-stock');
+        const variationsTable = document.querySelector('.variations');
+
+        outOfStockButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const preorderContainer = document.createElement('div');
+                preorderContainer.className = 'preorder';
+                preorderContainer.textContent = 'Товара нет в наличии';
+                variationsTable.parentNode.insertBefore(preorderContainer, variationsTable.nextSibling);
+
+                const otherButtons = document.querySelectorAll('.variation-button:not(.out-of-stock)');
+                otherButtons.forEach(otherButton => {
+                    otherButton.addEventListener('click', function () {
+                        const existingPreorder = document.querySelector('.preorder');
+                        if (existingPreorder) {
+                            existingPreorder.remove();
+                        }
+                    });
+                });
+            });
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const variationButtons = document.querySelectorAll('.variation-button');
+        let selectedVariationId = null;
+
+        variationButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                if (!button.classList.contains('out-of-stock')) {
+                    const variationId = button.getAttribute('data-variation-id');
+                    if (selectedVariationId !== variationId) {
+                        selectedVariationId = variationId;
+                        // Ваш код для обработки клика на кнопке
+                        if (button.classList.contains('active')) {
+                            const addToCartButton = document.querySelector('.single-product-page__add_to_cart');
+                            addToCartButton.addEventListener('click', function () {
+                                document.querySelector('.single-product-page__view_cart').style.display = 'flex';
+                                document.querySelector('.single-product-page__add_to_cart').style.display = 'none';
+                            });
+                        }
+                    }
+                }
+            });
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const characteristicsHeader = document.querySelector('.characteristics-header');
+        const characteristicsContent = document.querySelector('.characteristics-content');
+        const deliveryHeader = document.querySelector('.delivery-header');
+        const deliveryContent = document.querySelector('.delivery-content');
+
+        characteristicsHeader.addEventListener('click', function () {
+            if (characteristicsContent.style.display === 'none') {
+                characteristicsContent.style.display = 'block';
+            } else {
+                characteristicsContent.style.display = 'none';
+            }
+        });
+
+        deliveryHeader.addEventListener('click', function () {
+            if (deliveryContent.style.display === 'none') {
+                deliveryContent.style.display = 'block';
+            } else {
+                deliveryContent.style.display = 'none';
+            }
+        });
+    });
+</script>
+<script>
+    function showImage(imageUrl) {
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("modalImage");
+
+        modal.style.display = "block";
+        modalImg.src = imageUrl;
+    }
+
+    function closeModal() {
+        var modal = document.getElementById("imageModal");
+        modal.style.display = "none";
+    }
+</script>
+{% endblock %}

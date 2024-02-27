@@ -1,0 +1,423 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/style_new.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_new_catalog.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_catalog.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_sale.css" %}">
+{% endblock %}
+
+{% block content %}
+<div class="container category-page">
+    <ol class="breadcrumbs" itemscope="">
+        <li class="breadcrumbs__item" itemprop="itemListElement" itemscope="">
+            <a class="breadcrumbs__link" itemprop="item" href="/">
+                <span itemprop="name">
+                    Главная
+                </span>
+            </a>
+            <meta itemprop="position" content="1">
+        </li>
+        <li class="breadcrumbs__item" itemprop="itemListElement" itemscope="">
+            <span itemprop="item" content="isnew">
+                <span itemprop="name">
+                    Каталог
+                </span>
+            </span>
+            <meta itemprop="position" content="2">
+        </li>
+    </ol>
+    <div class="category-page-header">
+        <div class="page-header-left">
+            <h2 class="page-header-title">Каталог обуви</h2>
+        </div>
+        <div class="page-header-right">
+            <div class="sort-filter">
+                <label for="sort-select">Сортировка:</label>
+                <select class="sort-select">
+                    <option value="date">По дате добавления</option>
+                    <option value="price-asc">По цене (по возрастанию)</option>
+                    <option value="price-desc">По цене (по убыванию)</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="catalog new-products">
+        <div class="catalog-new__columns">
+            <div class="catalog-new__column catalog-new__column--sidebar">
+                <div class="catalog-filters__box catalog-filters__box--open" onclick="closeTab(this);">
+                    <h5 class="catalog-filters__box-title">
+                        Обувь
+                    </h5>
+                    <div class="catalog-filters__box-content">
+                        <ul class="catalog-filters__box-list">
+                            <li class="catalog-filters__box-list-item">
+                                <a href="" class="catalog-filters__box-link" title="Зимняя обувь">
+                                    Зимняя обувь
+                                    <span class="catalog-filters__count" style="display: none">(13)</span>
+                                </a>
+                            </li>
+                            <li class="catalog-filters__box-list-item">
+                                <a href="" class="catalog-filters__box-link" title="Кроссовки">
+                                    Кроссовки
+                                    <span class="catalog-filters__count" style="display: none">(13)</span>
+                                </a>
+                            </li>
+                            <li class="catalog-filters__box-list-item">
+                                <a href="" class="catalog-filters__box-link" title="Сланцы">
+                                    Сланцы
+                                    <span class="catalog-filters__count" style="display: none">(13)</span>
+                                </a>
+                            </li>
+                            <li class="catalog-filters__box-list-item">
+                                <a href="" class="catalog-filters__box-link" title="Кеды">
+                                    Кеды
+                                    <span class="catalog-filters__count" style="display: none">(13)</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="catalog__filters">
+                    <div class="catalog-filters">
+                        <div class="catalog-filters__box catalog-filters__box--open" onclick="closeTab(this);">
+                            <h5 class="catalog-filters__box-title">
+                                Бренд
+                            </h5>
+                            <div class="catalog-filters__box-content">
+                                <ul class="catalog-filters__box-list">
+                                    <li class="catalog-filters__box-list-item">
+                                        <label>
+                                            <input type="checkbox" class="filter-checkbox" value="nike">
+                                            Nike
+                                        </label>
+                                    </li>
+                                    <li class="catalog-filters__box-list-item">
+                                        <label>
+                                            <input type="checkbox" class="filter-checkbox" value="adidas">
+                                            Adidas
+                                        </label>
+                                    </li>
+                                    <li class="catalog-filters__box-list-item">
+                                        <label>
+                                            <input type="checkbox" class="filter-checkbox" value="new-balance">
+                                            New-balance
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="catalog-filters__box catalog-filters__box--open" onclick="closeTab(this);">
+                            <h5 class="catalog-filters__box-title">
+                                Пол
+                            </h5>
+                            <div class="catalog-filters__box-content">
+                                <ul class="catalog-filters__box-list">
+                                    <li class="catalog-filters__box-list-item">
+                                        <label>
+                                            <input type="checkbox" class="filter-checkbox" value="мужской">
+                                            Мужской
+                                        </label>
+                                    </li>
+                                    <li class="catalog-filters__box-list-item">
+                                        <label>
+                                            <input type="checkbox" class="filter-checkbox" value="женский">
+                                            Женский
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="catalog-filters__box catalog-filters__box--open" onclick="closeTab(this);">
+                            <h5 class="catalog-filters__box-title">
+                                Сезон
+                            </h5>
+                            <div class="catalog-filters__box-content">
+                                <ul class="catalog-filters__box-list">
+                                    <li class="catalog-filters__box-list-item">
+                                        <label>
+                                            <input type="checkbox" class="filter-checkbox" value="осень-зима">
+                                            Осень-Зима
+                                        </label>
+                                    </li>
+                                    <li class="catalog-filters__box-list-item">
+                                        <label>
+                                            <input type="checkbox" class="filter-checkbox" value="весна-лето">
+                                            Весна-Лето
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="catalog-new__column catalog-new__column--mainpage">
+                <div class="new-products-carts">
+                    <div class="new-products-carts__list">
+                        <div class="catalog-card__item">
+                            <div class="catalog-card">
+                                <div class="catalog-card-image">
+                                    <div class="catalog-card-image__inner">
+                                        <picture class="image-wrapper-new">
+                                            <img src="{% static "image/New Balance 574.jpg" %}" alt="New Balance 574">
+                                        </picture>
+                                    </div>
+                                    <div class="catalog-card__labels catalog-card__labels--top--right">
+                                        <span class="catalog-card-label catalog-card-label--favorite"><i
+                                                class="fa-solid fa-heart"></i></span>
+                                    </div>
+                                </div>
+                                <div class="catalog-card__hover"></div>
+                                <h5 class="catalog-card-title">
+                                    <a href="nb574_bg.html" calss="catalog-card__link" title="New Balance 574">
+                                        New Balance 574
+                                        <span class="catalog-card-link__area"></span>
+                                    </a>
+                                </h5>
+                                <div class="catalog-card-price">
+                                    <span class="catalog-card-price-value">
+                                        18 990 руб.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog-card__item">
+                            <div class="catalog-card">
+                                <div class="catalog-card-image">
+                                    <div class="catalog-card-image__inner">
+                                        <picture class="image-wrapper-new">
+                                            <img src="{% static "image/Kappa Renzo Trail.jpg" %}" alt="Kappa Renzo Trail">
+                                        </picture>
+                                    </div>
+                                    <div class="catalog-card__labels catalog-card__labels--top--left">
+                                        <span class="catalog-card-label catalog-card-label--new">Новинка</span>
+                                    </div>
+                                    <div class="catalog-card__labels catalog-card__labels--top--right">
+                                        <span class="catalog-card-label catalog-card-label--favorite"><i
+                                                class="fa-solid fa-heart"></i></span>
+                                    </div>
+                                </div>
+                                <div class="catalog-card__hover"></div>
+                                <h5 class="catalog-card-title">
+                                    <a href="" calss="catalog-card__link" title="Kappa Renzo Trail">
+                                        Kappa Renzo Trail
+                                        <span class="catalog-card-link__area"></span>
+                                    </a>
+                                </h5>
+                                <div class="catalog-card-price">
+                                    <span class="catalog-card-price-value">
+                                        8 000 руб.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog-card__item">
+                            <div class="catalog-card">
+                                <div class="catalog-card-image">
+                                    <div class="catalog-card-image__inner">
+                                        <picture class="image-wrapper-new">
+                                            <img src="{% static "image/Puma Morphic Retro.jpg" %}"
+                                                alt="Puma Morphic Retro">
+                                        </picture>
+                                    </div>
+                                    <div class="catalog-card__labels catalog-card__labels--top--right">
+                                        <span class="catalog-card-label catalog-card-label--favorite"><i
+                                                class="fa-solid fa-heart"></i></span>
+                                    </div>
+                                </div>
+                                <div class="catalog-card__hover"></div>
+                                <h5 class="catalog-card-title">
+                                    <a href="" calss="catalog-card__link" title="Puma Morphic Retro">
+                                        Puma Morphic Retro
+                                        <span class="catalog-card-link__area"></span>
+                                    </a>
+                                </h5>
+                                <div class="catalog-card-price">
+                                    <span class="catalog-card-price-value">
+                                        13 999 руб.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog-card__item">
+                            <div class="catalog-card">
+                                <div class="catalog-card-image">
+                                    <div class="catalog-card-image__inner">
+                                        <picture class="image-wrapper-new">
+                                            <img src="{% static "image/Kappa Bonno Mid.jpg" %}" alt="Kappa Bonno Mid">
+                                        </picture>
+                                    </div>
+                                    <div class="catalog-card__labels catalog-card__labels--top--left">
+                                        <span class="catalog-card-label catalog-card-label--new">-30%</span>
+                                    </div>
+                                    <div class="catalog-card__labels catalog-card__labels--top--right">
+                                        <span class="catalog-card-label catalog-card-label--favorite"><i
+                                                class="fa-solid fa-heart"></i></span>
+                                    </div>
+                                </div>
+                                <div class="catalog-card__hover"></div>
+                                <h5 class="catalog-card-title">
+                                    <a href="" calss="catalog-card__link" title="Kappa Bonno Mid">
+                                        Kappa Bonno Mid
+                                        <span class="catalog-card-link__area"></span>
+                                    </a>
+                                </h5>
+                                <div class="catalog-card-price">
+                                    <span class="catalog-card-price-value catalog-card-price-value--old">
+                                        10 499 руб.
+                                    </span>
+                                    <span class="catalog-card-price-value__sale">
+                                        7 349 руб.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog-card__item">
+                            <div class="catalog-card">
+                                <div class="catalog-card-image">
+                                    <div class="catalog-card-image__inner">
+                                        <picture class="image-wrapper-new">
+                                            <img src="{% static "image/Crocs Hiker Xscape.jpg" %}" alt="Crocs Hiker Xscape">
+                                        </picture>
+                                    </div>
+                                    <div class="catalog-card__labels catalog-card__labels--top--right">
+                                        <span class="catalog-card-label catalog-card-label--favorite"><i
+                                                class="fa-solid fa-heart"></i></span>
+                                    </div>
+                                </div>
+                                <div class="catalog-card__hover"></div>
+                                <h5 class="catalog-card-title">
+                                    <a href="" calss="catalog-card__link" title="Crocs Hiker Xscape">
+                                        Crocs Hiker Xscape
+                                        <span class="catalog-card-link__area"></span>
+                                    </a>
+                                </h5>
+                                <div class="catalog-card-price">
+                                    <span class="catalog-card-price-value">
+                                        6 000 руб.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog-card__item">
+                            <div class="catalog-card">
+                                <div class="catalog-card-image">
+                                    <div class="catalog-card-image__inner">
+                                        <picture class="image-wrapper-new">
+                                            <img src="{% static "image/Puma RS-X Hi.jpg" %}" alt="Puma RS-X Hi">
+                                        </picture>
+                                    </div>
+                                    <div class="catalog-card__labels catalog-card__labels--top--right">
+                                        <span class="catalog-card-label catalog-card-label--favorite"><i
+                                                class="fa-solid fa-heart"></i></span>
+                                    </div>
+                                </div>
+                                <div class="catalog-card__hover"></div>
+                                <h5 class="catalog-card-title">
+                                    <a href="" calss="catalog-card__link" title="Puma RS-X Hi">
+                                        Puma RS-X Hi
+                                        <span class="catalog-card-link__area"></span>
+                                    </a>
+                                </h5>
+                                <div class="catalog-card-price">
+                                    <span class="catalog-card-price-value">
+                                        14 000 руб.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pagination" data-pagination-num="1">
+                    <div class="pagination">
+                        <div class="pagination-links">
+                            <li class="active">
+                                <a style="color:#ef0d22">1</a>
+                            </li>
+                            <li>
+                                <a href="">2</a>
+                            </li>
+                            <li>
+                                <a href="">3</a>
+                            </li>
+                            <li>
+                                <a href="">></a>
+                            </li>
+                            <li>
+                                <a href="">>|</a>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button onclick="scrollToTop()" id="scrollToTopButton">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+</div>
+
+<script>
+    function closeTab(element) {
+        const title = element.querySelector('.catalog-filters__box-title');
+        const isOpen = element.classList.contains('catalog-filters__box--open');
+
+        if (isOpen) {
+            element.classList.remove('catalog-filters__box--open');
+        } else {
+            element.classList.add('catalog-filters__box--open');
+        }
+    }
+</script>
+
+<script>
+    function filterItems() {
+        const checkboxes = document.querySelectorAll('.filter-checkbox');
+        const items = document.querySelectorAll('.catalog-new__column--mainpage .catalog-item');
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const checkedValues = Array.from(checkboxes)
+                    .filter(cb => cb.checked)
+                    .map(cb => cb.value);
+
+                items.forEach(item => {
+                    const brand = item.dataset.brand;
+                    if (checkedValues.length === 0 || checkedValues.includes(brand)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+
+    // Вызов функции filterItems при загрузке страницы
+    document.addEventListener('DOMContentLoaded', filterItems);
+</script>
+
+<script>
+    function scrollToTop() {
+        const c = document.documentElement.scrollTop || document.body.scrollTop;
+        if (c > 0) {
+            window.requestAnimationFrame(scrollToTop);
+            window.scrollTo(0, c - c / 8);
+        }
+    }
+
+    window.onscroll = function () {
+        scrollFunction();
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("scrollToTopButton").style.display = "block";
+        } else {
+            document.getElementById("scrollToTopButton").style.display = "none";
+        }
+    }
+</script>
+{% endblock %}

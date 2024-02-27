@@ -10,7 +10,7 @@ def index(request):
         'title': 'Impulse - Главная'
     }
 
-    return render(request, 'index.html', context)
+    return render(request, 'main/index.html', context)
 
 
 def about(request):
@@ -22,4 +22,4 @@ def about(request):
         'is_about_page': True,
     }
 
-    return render(request, 'about.html', context)
+    return render(request, 'main/about.html', context)
