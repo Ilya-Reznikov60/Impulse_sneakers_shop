@@ -69,3 +69,5 @@ class Product(models.Model):
 
     def __str__(self):
         return f'{self.name} Количество - {self.quantity}'
+        formatted_price = '{:,.2f}'.format(self.price).replace(',', ' ')
+        return f'{self.name} - Цена: {formatted_price} руб.'

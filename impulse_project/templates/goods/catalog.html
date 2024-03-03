@@ -156,91 +156,7 @@
             <div class="catalog-new__column catalog-new__column--mainpage">
                 <div class="new-products-carts">
                     <div class="new-products-carts__list">
-                        <div class="catalog-card__item">
-                            <div class="catalog-card">
-                                <div class="catalog-card-image">
-                                    <div class="catalog-card-image__inner">
-                                        <picture class="image-wrapper-new">
-                                            <img src="{% static "image/New Balance 574.jpg" %}" alt="New Balance 574">
-                                        </picture>
-                                    </div>
-                                    <div class="catalog-card__labels catalog-card__labels--top--right">
-                                        <span class="catalog-card-label catalog-card-label--favorite"><i
-                                                class="fa-solid fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <div class="catalog-card__hover"></div>
-                                <h5 class="catalog-card-title">
-                                    <a href="nb574_bg.html" calss="catalog-card__link" title="New Balance 574">
-                                        New Balance 574
-                                        <span class="catalog-card-link__area"></span>
-                                    </a>
-                                </h5>
-                                <div class="catalog-card-price">
-                                    <span class="catalog-card-price-value">
-                                        18 990 руб.
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="catalog-card__item">
-                            <div class="catalog-card">
-                                <div class="catalog-card-image">
-                                    <div class="catalog-card-image__inner">
-                                        <picture class="image-wrapper-new">
-                                            <img src="{% static "image/Kappa Renzo Trail.jpg" %}" alt="Kappa Renzo Trail">
-                                        </picture>
-                                    </div>
-                                    <div class="catalog-card__labels catalog-card__labels--top--left">
-                                        <span class="catalog-card-label catalog-card-label--new">Новинка</span>
-                                    </div>
-                                    <div class="catalog-card__labels catalog-card__labels--top--right">
-                                        <span class="catalog-card-label catalog-card-label--favorite"><i
-                                                class="fa-solid fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <div class="catalog-card__hover"></div>
-                                <h5 class="catalog-card-title">
-                                    <a href="" calss="catalog-card__link" title="Kappa Renzo Trail">
-                                        Kappa Renzo Trail
-                                        <span class="catalog-card-link__area"></span>
-                                    </a>
-                                </h5>
-                                <div class="catalog-card-price">
-                                    <span class="catalog-card-price-value">
-                                        8 000 руб.
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="catalog-card__item">
-                            <div class="catalog-card">
-                                <div class="catalog-card-image">
-                                    <div class="catalog-card-image__inner">
-                                        <picture class="image-wrapper-new">
-                                            <img src="{% static "image/Puma Morphic Retro.jpg" %}"
-                                                alt="Puma Morphic Retro">
-                                        </picture>
-                                    </div>
-                                    <div class="catalog-card__labels catalog-card__labels--top--right">
-                                        <span class="catalog-card-label catalog-card-label--favorite"><i
-                                                class="fa-solid fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <div class="catalog-card__hover"></div>
-                                <h5 class="catalog-card-title">
-                                    <a href="" calss="catalog-card__link" title="Puma Morphic Retro">
-                                        Puma Morphic Retro
-                                        <span class="catalog-card-link__area"></span>
-                                    </a>
-                                </h5>
-                                <div class="catalog-card-price">
-                                    <span class="catalog-card-price-value">
-                                        13 999 руб.
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
+                        {% for product in goods %}
                         <div class="catalog-card__item">
                             <div class="catalog-card">
                                 <div class="catalog-card-image">
@@ -249,9 +165,15 @@
                                             <img src="{% static "image/Kappa Bonno Mid.jpg" %}" alt="Kappa Bonno Mid">
                                         </picture>
                                     </div>
+                                    {% if product.is_new %}
                                     <div class="catalog-card__labels catalog-card__labels--top--left">
-                                        <span class="catalog-card-label catalog-card-label--new">-30%</span>
+                                        <span class="catalog-card-label catalog-card-label--new">Новинка</span>
                                     </div>
+                                    {% elif product.discount %}
+                                    <div class="catalog-card__labels catalog-card__labels--top--left">
+                                        <span class="catalog-card-label catalog-card-label--new">-{{ product.discount|floatformat:"-2" }}%</span>
+                                    </div>
+                                    {% endif %}
                                     <div class="catalog-card__labels catalog-card__labels--top--right">
                                         <span class="catalog-card-label catalog-card-label--favorite"><i
                                                 class="fa-solid fa-heart"></i></span>
@@ -259,75 +181,30 @@
                                 </div>
                                 <div class="catalog-card__hover"></div>
                                 <h5 class="catalog-card-title">
-                                    <a href="" calss="catalog-card__link" title="Kappa Bonno Mid">
-                                        Kappa Bonno Mid
+                                    <a href="" calss="catalog-card__link" title="{{ product.name }}">
+                                        {{ product.name }}
                                         <span class="catalog-card-link__area"></span>
                                     </a>
                                 </h5>
+                                {% if product.discount %}
                                 <div class="catalog-card-price">
                                     <span class="catalog-card-price-value catalog-card-price-value--old">
-                                        10 499 руб.
+                                        {{ product.old_price|floatformat:"-2" }} руб.
                                     </span>
                                     <span class="catalog-card-price-value__sale">
-                                        7 349 руб.
+                                        {{ product.price|floatformat:"-2" }} руб.
                                     </span>
                                 </div>
+                                {% else %}
+                                    <div class="catalog-card-price">
+                                        <span class="catalog-card-price-value">
+                                            {{ product.price|floatformat:"-2" }} руб.
+                                        </span>
+                                    </div>
+                                {% endif %}
                             </div>
                         </div>
-                        <div class="catalog-card__item">
-                            <div class="catalog-card">
-                                <div class="catalog-card-image">
-                                    <div class="catalog-card-image__inner">
-                                        <picture class="image-wrapper-new">
-                                            <img src="{% static "image/Crocs Hiker Xscape.jpg" %}" alt="Crocs Hiker Xscape">
-                                        </picture>
-                                    </div>
-                                    <div class="catalog-card__labels catalog-card__labels--top--right">
-                                        <span class="catalog-card-label catalog-card-label--favorite"><i
-                                                class="fa-solid fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <div class="catalog-card__hover"></div>
-                                <h5 class="catalog-card-title">
-                                    <a href="" calss="catalog-card__link" title="Crocs Hiker Xscape">
-                                        Crocs Hiker Xscape
-                                        <span class="catalog-card-link__area"></span>
-                                    </a>
-                                </h5>
-                                <div class="catalog-card-price">
-                                    <span class="catalog-card-price-value">
-                                        6 000 руб.
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="catalog-card__item">
-                            <div class="catalog-card">
-                                <div class="catalog-card-image">
-                                    <div class="catalog-card-image__inner">
-                                        <picture class="image-wrapper-new">
-                                            <img src="{% static "image/Puma RS-X Hi.jpg" %}" alt="Puma RS-X Hi">
-                                        </picture>
-                                    </div>
-                                    <div class="catalog-card__labels catalog-card__labels--top--right">
-                                        <span class="catalog-card-label catalog-card-label--favorite"><i
-                                                class="fa-solid fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <div class="catalog-card__hover"></div>
-                                <h5 class="catalog-card-title">
-                                    <a href="" calss="catalog-card__link" title="Puma RS-X Hi">
-                                        Puma RS-X Hi
-                                        <span class="catalog-card-link__area"></span>
-                                    </a>
-                                </h5>
-                                <div class="catalog-card-price">
-                                    <span class="catalog-card-price-value">
-                                        14 000 руб.
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="pagination" data-pagination-num="1">
