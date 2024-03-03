@@ -18,18 +18,11 @@
                 <div class="mega-menu">
                     <div class="mega-menu-content">
                         <ul class="menu-list">
+                            {% for category in categories %}
                             <li class="menu-item">
-                                <a href="#">Кроссовки</a>
+                                <a href="#">{{ category.name }}</a>
                             </li>
-                            <li class="menu-item">
-                                <a href="#">Кеды</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#">Зимняя обувь</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#">Сланцы</a>
-                            </li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
