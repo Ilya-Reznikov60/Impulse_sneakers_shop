@@ -1,6 +1,42 @@
 from django.db import models
 
 
+class Specification(models.Model):
+    '''
+    Модель Характеристик
+    '''
+    name = models.CharField(
+        max_length=150,
+        verbose_name='Название характеристики'
+    )
+    gender = models.CharField(
+        max_length=15,
+        blank=True,
+        null=True,
+        verbose_name='Пол для продукта'
+    )
+    color = models.CharField(
+        max_length=50,
+        blank=True,
+        null=True,
+        verbose_name='Цвет продукта'
+    )
+    country = models.CharField(
+        max_length=50,
+        blank=True,
+        null=True,
+        verbose_name='Страна производства'
+    )
+    composition = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name='Состав продукта'
+    )
+
+    def __str__(self):
+        return self.name
+
+
 class Category(models.Model):
     '''
     Модель Категорий
@@ -35,10 +71,8 @@ class Product(models.Model):
         blank=True, null=True,
         verbose_name='Изображение'
     )
-    price = models.DecimalField(
-        default=0.00,
-        max_digits=7,
-        decimal_places=2,
+    price = models.IntegerField(
+        default=0,
         verbose_name='Цена'
     )
     discount = models.DecimalField(
@@ -61,6 +95,20 @@ class Product(models.Model):
         on_delete=models.CASCADE,
         verbose_name='Выберите категорию'
     )
+    specifications = models.ForeignKey(
+        Specification,
+        related_name='products_with_specifications',
+        on_delete=models.CASCADE,
+        verbose_name='Выберите характеристики'
+    )
+    is_new = models.BooleanField(
+        default=False,
+        verbose_name='Новый продукт'
+    )
+    old_price = models.IntegerField(
+        default=0,
+        verbose_name='Старая цена'
+    )
 
     class Meta:
         ordering = ('name',)
@@ -69,5 +117,3 @@ class Product(models.Model):
 
     def __str__(self):
         return f'{self.name} Количество - {self.quantity}'
-        formatted_price = '{:,.2f}'.format(self.price).replace(',', ' ')
-        return f'{self.name} - Цена: {formatted_price} руб.'
