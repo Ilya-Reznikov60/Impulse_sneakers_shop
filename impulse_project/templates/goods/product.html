@@ -31,7 +31,7 @@
         <li class="breadcrumbs__item" itemprop="itemListElement" itemscope="">
             <span itemprop="item" content="isnew">
                 <span itemprop="name">
-                    New Balance 574
+                    {{ product.name }}
                 </span>
             </span>
             <meta itemprop="position" content="3">
@@ -57,8 +57,8 @@
 
                 </script>
                 <div class="single-product-page__gallery module-lightbox">
-                    <img id="largeImage" src="{% static "image/New Balance 574.jpg" %}" alt="Large Image" class="large-image"
-                        onclick="showImage('{% static "image/New Balance 574.jpg" %}')">
+                    <img id="largeImage" src="{{ product.image.url }}" alt="Large Image" class="large-image"
+                        onclick="showImage('{{ product.image.url }}')">
                     <div class="small-images">
                         <img src="{% static "image/New Balance 574-two.jpg" %}" alt="Small Image 1" class="small-image"
                             onclick="showImage('{% static "image/New Balance 574-two.jpg" %}')">
@@ -80,12 +80,12 @@
                 <div class="nb574-bg__summary">
                     <div class="single-product-page__head"></div>
                     <h2 class="single-product-page__title">
-                        Мужские Кроссовки New Balance 574
+                        {{ product.name }}
                     </h2>
                     <div class="single-product-page__box">
                         <div class="single-product-page__price">
                             <span class="commerce-product-price amount">
-                                18 990 руб.
+                                {{ product.price }} руб.
                             </span>
                         </div>
                     </div>
@@ -161,21 +161,20 @@
                             Описание модели
                         </div>
                         <p>
-                            Одни из самых культовых и упоминаемых кроссовок New Balance 574 первоначально были
-                            разработаны для бега и обеспечивали повышенный комфорт. Было это в 1988 году и с тех пор
-                            они остаются популярными, приобрели влиятельный повседневный дизайн и неоднократно
-                            переиздавались.
+                            {{ product.description }}
                         </p>
                         <p>Артикул: {{ product.generate_sku }}</p>
                     </div>
                     <div class="single-product-page__characteristics">
                         <div class="characteristics-header">Характеристики</div>
+                        {% for spec in specifications %}
                         <div class="characteristics-content" style="display: none;">
-                            <p>Пол: Мужской</p>
-                            <p>Цвета: Чёрный / Серый</p>
-                            <p>Страна: Вьетнам</p>
-                            <p>Состав: Замша / Синтетика / Текстиль / Резина</p>
+                            <p>Пол: {{ spec.gender }}</p>
+                            <p>Цвета: {{ spec.color }}</p>
+                            <p>Страна: {{ spec.country }}</p>
+                            <p>Состав: {{ spec.composition }}</p>
                         </div>
+                        {% endfor %}
                     </div>
 
                     <div class="single-product-page__delivery">

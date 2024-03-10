@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from goods.models import Product
+from goods.models import Product, Specification
 
 
 def catalog(request):
@@ -18,13 +18,19 @@ def catalog(request):
     return render(request, 'goods/catalog.html', context)
 
 
-def product(request):
+def product(request, product_id):
     '''
     product function
     '''
+
+    product = Product.objects.get(id=product_id)
+    specifications = Specification.objects.filter(products_with_specifications=product_id)
+
     context = {
         'title': 'Impulse - продукт',
         'is_product_page': True,
+        'product': product,
+        'specifications': specifications
     }
 
-    return render(request, 'goods/product.html', context)
+    return render(request, 'goods/product.html', context=context)
