@@ -162,7 +162,9 @@
                                 <div class="catalog-card-image">
                                     <div class="catalog-card-image__inner">
                                         <picture class="image-wrapper-new">
-                                            <img src="{% static "image/Kappa Bonno Mid.jpg" %}" alt="Kappa Bonno Mid">
+                                            {% if product.image %}
+                                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                            {% endif %}
                                         </picture>
                                     </div>
                                     {% if product.is_new %}
@@ -189,10 +191,10 @@
                                 {% if product.discount %}
                                 <div class="catalog-card-price">
                                     <span class="catalog-card-price-value catalog-card-price-value--old">
-                                        {{ product.old_price|floatformat:"-2" }} руб.
+                                        {{ product.price }} руб.
                                     </span>
                                     <span class="catalog-card-price-value__sale">
-                                        {{ product.price|floatformat:"-2" }} руб.
+                                        {{ product.sell_price|floatformat:"0" }} руб.
                                     </span>
                                 </div>
                                 {% else %}
