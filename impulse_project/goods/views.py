@@ -18,13 +18,15 @@ def catalog(request):
     return render(request, 'goods/catalog.html', context)
 
 
-def product(request, product_id):
+def product(request, product_slug):
     '''
     product function
     '''
 
-    product = Product.objects.get(id=product_id)
-    specifications = Specification.objects.filter(products_with_specifications=product_id)
+    product = Product.objects.get(slug=product_slug)
+    specifications = Specification.objects.filter(
+        products_with_specifications=product
+    )
 
     context = {
         'title': 'Impulse - продукт',
