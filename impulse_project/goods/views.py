@@ -13,11 +13,24 @@ def get_page(request, goods_list):
     return paginator.get_page(page_number)
 
 
+def sort_products(products, sort_by):
+    if sort_by == 'price-asc':
+        return products.order_by('price')
+    elif sort_by == 'price-desc':
+        return products.order_by('-price')
+    else:
+        return products
+
+
 def catalog(request):
     '''
     catalog function
     '''
     goods = Product.objects.all()
+
+    if request.method == 'GET' and 'sort_by' in request.GET:
+        sort_by = request.GET['sort_by']
+        goods = sort_products(goods, sort_by)
 
     page_obj = get_page(request, goods)
 
@@ -57,6 +70,10 @@ def catalog_by_category(request, category_slug):
     else:
         category = get_object_or_404(Category, slug=category_slug)
         products = Product.objects.filter(category=category)
+
+    if request.method == 'GET' and 'sort_by' in request.GET:
+        sort_by = request.GET['sort_by']
+        products = sort_products(products, sort_by)
 
     page_obj = get_page(request, products)
 

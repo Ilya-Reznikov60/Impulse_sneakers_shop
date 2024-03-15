@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load goods_tags %}
 
 {% block css %}
     <link rel="stylesheet" href="{% static "css/style_new.css" %}">
@@ -35,14 +36,16 @@
             <h2 class="page-header-title">{{ category.name }}</h2>
         {% endif %}
         <div class="page-header-right">
+            <form method="get" id="sort-form">
             <div class="sort-filter">
-                <label for="sort-select">Сортировка:</label>
-                <select class="sort-select">
-                    <option value="date">По дате добавления</option>
-                    <option value="price-asc">По цене (по возрастанию)</option>
-                    <option value="price-desc">По цене (по убыванию)</option>
-                </select>
-            </div>
+                    <label for="sort-select">Сортировка:</label>
+                    <select class="sort-select" name="sort_by" id="sort-select">
+                        <option value="date">По дате добавления</option>
+                        <option value="price-asc">По цене (по возрастанию)</option>
+                        <option  type="radio" name="order_by" value="price-desc" {% if request.GET.order_by == 'price-desc' %}checked{% endif %}>По цене (по убыванию)</option>
+                    </select>
+                </div>
+            </form>
         </div>
     </div>
     <div class="catalog new-products">
@@ -219,22 +222,24 @@
                                     <a href="?page=1">&lt;&lt;</a>
                                 </li>
                                 <li>
-                                    <a href="?page={{ goods.previous_page_number }}">&lt;</a>
+                                    <a href="?{% change_params page=goods.previos_page_number %}">&lt;</a>
                                 </li>
                             {% endif %}
 
                             {% for num in goods.paginator.page_range %}
+                            {% if num >= goods.number|add:-2 and num <= goods.number|add:2 %}
                                 <li {% if num == goods.number %}class="active_pag"{% endif %}>
-                                    <a href="?page={{ num }}">{{ num }}</a>
+                                    <a href="?{% change_params page=num %}">{{ num }}</a>
                                 </li>
+                            {% endif %}
                             {% endfor %}
 
                             {% if goods.has_next %}
                                 <li>
-                                    <a href="?page={{ goods.next_page_number }}">&gt;</a>
+                                    <a href="?{% change_params page=goods.previos_page_number %}">&gt;</a>
                                 </li>
                                 <li>
-                                    <a href="?page={{ goods.paginator.num_pages }}">&gt;&gt;</a>
+                                    <a href="?{% change_params page=goods.paginator.num_pages %}">&gt;&gt;</a>
                                 </li>
                             {% endif %}
                         </div>
@@ -247,6 +252,12 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 </div>
+
+<script>
+    document.getElementById('sort-select').addEventListener('change', function() {
+        document.getElementById('sort-form').submit();
+    });
+</script>
 
 <script>
     function closeTab(element) {
