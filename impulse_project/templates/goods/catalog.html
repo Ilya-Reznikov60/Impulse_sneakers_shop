@@ -211,24 +211,32 @@
                         {% endfor %}
                     </div>
                 </div>
-                <div class="pagination" data-pagination-num="1">
+                <div class="pagination" data-pagination-num="{{ goods.number }}">
                     <div class="pagination">
                         <div class="pagination-links">
-                            <li class="active">
-                                <a style="color:#ef0d22">1</a>
-                            </li>
-                            <li>
-                                <a href="">2</a>
-                            </li>
-                            <li>
-                                <a href="">3</a>
-                            </li>
-                            <li>
-                                <a href="">></a>
-                            </li>
-                            <li>
-                                <a href="">>|</a>
-                            </li>
+                            {% if goods.has_previous %}
+                                <li>
+                                    <a href="?page=1">&lt;&lt;</a>
+                                </li>
+                                <li>
+                                    <a href="?page={{ goods.previous_page_number }}">&lt;</a>
+                                </li>
+                            {% endif %}
+
+                            {% for num in goods.paginator.page_range %}
+                                <li {% if num == goods.number %}class="active_pag"{% endif %}>
+                                    <a href="?page={{ num }}">{{ num }}</a>
+                                </li>
+                            {% endfor %}
+
+                            {% if goods.has_next %}
+                                <li>
+                                    <a href="?page={{ goods.next_page_number }}">&gt;</a>
+                                </li>
+                                <li>
+                                    <a href="?page={{ goods.paginator.num_pages }}">&gt;&gt;</a>
+                                </li>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

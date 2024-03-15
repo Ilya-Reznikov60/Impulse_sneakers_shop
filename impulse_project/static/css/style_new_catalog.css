@@ -332,6 +332,10 @@
     cursor: pointer;
 }
 
+.pagination .pagination-links li.active_pag a {
+    color: red; /* Цвет текста активной ссылки */
+}
+
 @media (max-width: 768px) {
     .catalog-new__column--sidebar {
         display: none;
