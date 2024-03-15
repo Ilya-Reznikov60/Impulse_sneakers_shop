@@ -29,9 +29,11 @@
         </li>
     </ol>
     <div class="category-page-header">
-        <div class="page-header-left">
+        {% if not category.name %}
             <h2 class="page-header-title">Каталог обуви</h2>
-        </div>
+        {% else %}
+            <h2 class="page-header-title">{{ category.name }}</h2>
+        {% endif %}
         <div class="page-header-right">
             <div class="sort-filter">
                 <label for="sort-select">Сортировка:</label>
