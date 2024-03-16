@@ -4,15 +4,13 @@
     <div class="navbar">
         <div class="logo"><a href="{% url "main:index" %}">Impulse</a></div>
         <ul class="links">
-            {% if is_about_page %}
-                <li class="information-link"><a href="information.html">Информация</a></li>
+            {% if is_about_page or is_info_page or is_contact_page or is_questions_page or is_privacy_page %}
+                <li class="information-link"><a href="{% url "main:info" %}">Информация</a></li>
             {% else %}
-                <li><a href="information.html">Информация</a></li>
+                <li><a href="{% url "main:info" %}">Информация</a></li>
             {% endif %}
             <li><a href="new_items.html">Новинки</a></li>
-            {% if is_catalog_page %}
-                <li class="catalog-link"><a href="{% url "catalog:index" %}">Каталог</a>
-            {% elif is_product_page %}
+            {% if is_catalog_page or is_product_page %}
                 <li class="catalog-link"><a href="{% url "catalog:index" %}">Каталог</a>
             {% else %}
                 <li><a href="{% url "catalog:index"%}">Каталог</a>
@@ -50,7 +48,7 @@
         </div>
     </div>
     <div class="dropdown_menu">
-        <li><a href="information.html">Информация</a></li>
+        <li><a href="{% url "main:info" %}">Информация</a></li>
         <li><a href="new_items.html">Новинки</a></li>
         <li><a href="{% url "catalog:index" %}">Каталог</a></li>
         <li><a href="sale.html">Распродажа</a></li>

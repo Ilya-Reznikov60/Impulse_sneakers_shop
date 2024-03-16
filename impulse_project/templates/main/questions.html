@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/style_new.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_new_catalog.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_information.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_contacts.css" %}">
+{% endblock %}
+
+{% block content %}
+    {% include "main/includes/info_breadcrumbs.html" %}
+        {% include 'main/includes/info_menu.html' %}
+            <div class="page-info__content">
+                <h3 class="info__content-title"> Вопросы и ответы </h3>
+                <div class="info__content-text">
+                    <p>В данном разделе отвечаем на ваши самые распространнёные вопросы</p>
+                    <p>Раздел дополняется</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

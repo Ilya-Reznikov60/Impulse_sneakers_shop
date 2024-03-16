@@ -9,62 +9,8 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container category-page">
-        <ol class="breadcrumbs" itemscope="">
-            <li class="breadcrumbs__item" itemprop="itemListElement" itemscope="">
-                <a class="breadcrumbs__link" itemprop="item" href="{% url "main:index" %}">
-                    <span itemprop="name">
-                        Главная
-                    </span>
-                </a>
-                <meta itemprop="position" content="1">
-            </li>
-            <li class="breadcrumbs__item" itemprop="itemListElement" itemscope="">
-                <span itemprop="item" content="isnew">
-                    <span itemprop="name">
-                        Информация
-                    </span>
-                </span>
-                <meta itemprop="position" content="2">
-            </li>
-        </ol>
-        <div class="category-page-header">
-            <div class="page-header-left">
-                <h2 class="page-header-title">Информация</h2>
-            </div>
-        </div>
-        <div class="page-info__box">
-            <div class="page-info__menu">
-                <nav class="desktop-menu">
-                    <ul id="menu-information" class="page-info__menu">
-                        <li class="page-info__menu-item">
-                            <a href="information.html">Доставка и оплата</a>
-                        </li>
-                        <li class="page-info__menu-item">
-                            <a href="contacts.html">Контакты</a>
-                        </li>
-                        <li class="page-info__menu-item">
-                            <a href="questions.html">Вопросы</a>
-                        </li>
-                        <li class="page-info__menu-item">
-                            <a href="privacy_policy.html">Политика конфиденциальности</a>
-                        </li>
-                        <li class="current_page_item page-info__menu-item">
-                            <a href="{% url "main:about" %}">О нас</a>
-                        </li>
-                    </ul>
-                </nav>
-                <nav class="mobile-menu">
-                    <select onchange="location = this.value;">
-                        <option value selected>О нас</option>
-                        <option value="information.html">Доставка и оплата</option>
-                        <option value="contacts.html">Контакты</option>
-                        <option value="questions.html">Вопросы</option>
-                        <option value="privacy_policy.html">Политика конфиденциальности</option>
-                        <option value="{% url "main:about" %}" selected>О нас</option>
-                    </select>
-                </nav>
-            </div>
+    {% include "main/includes/info_breadcrumbs.html" %}
+        {% include 'main/includes/info_menu.html' %}
             <div class="page-info__content">
                 <h3 class="info__content-title"> О нас </h3>
                 <div class="info__content-text">

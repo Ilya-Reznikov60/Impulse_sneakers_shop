@@ -1,0 +1,67 @@
+<div class="category-page-header">
+    <div class="page-header-left">
+        <h2 class="page-header-title">Информация</h2>
+    </div>
+</div>
+<div class="page-info__box">
+    <div class="page-info__menu">
+        <nav class="desktop-menu">
+            <ul id="menu-information" class="page-info__menu">
+                {% if  request.path == '/information/' %}
+                    <li class="current_page_item page-info__menu-item">
+                        <a href="{% url "main:info" %}">Доставка и оплата</a>
+                    </li>
+                {% else %}
+                    <li class="page-info__menu-item">
+                        <a href="{% url "main:info" %}">Доставка и оплата</a>
+                    </li>
+                {% endif %}
+                {% if request.path == '/contacts/' %}
+                    <li class="current_page_item page-info__menu-item">
+                        <a href="{% url "main:contact" %}">Контакты</a>
+                    </li>
+                {% else %}
+                    <li class="page-info__menu-item">
+                        <a href="{% url "main:contact" %}">Контакты</a>
+                    </li>
+                {% endif %}
+                {% if request.path == '/questions/' %}
+                    <li class="current_page_item page-info__menu-item">
+                        <a href="{% url "main:questions" %}">Вопросы</a>
+                    </li>
+                {% else %}
+                    <li class="page-info__menu-item">
+                        <a href="{% url "main:questions" %}">Вопросы</a>
+                    </li>
+                {% endif %}
+                {% if request.path == '/privacy_policy/' %}
+                    <li class="current_page_item page-info__menu-item">
+                        <a href="{% url "main:privacy_policy" %}">Политика конфиденциальности</a>
+                    </li>
+                {% else %}
+                    <li class="page-info__menu-item">
+                        <a href="{% url "main:privacy_policy" %}">Политика конфиденциальности</a>
+                    </li>
+                {% endif %}
+                {% if request.path == '/about/' %}
+                    <li class="current_page_item page-info__menu-item">
+                        <a href="{% url "main:about" %}">О нас</a>
+                    </li>
+                {% else %}
+                    <li class="page-info__menu-item">
+                        <a href="{% url "main:about" %}">О нас</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+        <nav class="mobile-menu">
+            <select onchange="location = this.value;">
+                <option value selected>О нас</option>
+                <option value="{% url "main:info" %}">Доставка и оплата</option>
+                <option value="{% url "main:contact" %}">Контакты</option>
+                <option value="{% url "main:questions" %}">Вопросы</option>
+                <option value="{% url "main:privacy_policy" %}">Политика конфиденциальности</option>
+                <option value="{% url "main:about" %}" selected>О нас</option>
+            </select>
+        </nav>
+    </div>
