@@ -36,6 +36,11 @@ class Specification(models.Model):
         verbose_name='Состав продукта'
     )
 
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Характеристика'
+        verbose_name_plural = 'Характеристики'
+
     def __str__(self):
         return self.name
 
