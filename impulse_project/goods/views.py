@@ -81,3 +81,24 @@ def catalog_by_category(request, category_slug):
         request, 'goods/catalog.html',
         {'goods': page_obj, 'category': category}
     )
+
+
+def new_items(request):
+    '''
+    new products function
+    '''
+    new_goods = Product.objects.filter(is_new=True)
+
+    if request.method == 'GET' and 'sort_by' in request.GET:
+        sort_by = request.GET['sort_by']
+        new_goods = sort_products(new_goods, sort_by)
+
+    page_obj = get_page(request, new_goods)
+
+    context = {
+        'title': 'Impulse - Новинки',
+        'is_new_items_page': True,
+        'goods': page_obj,
+    }
+
+    return render(request, 'goods/new_items.html', context)

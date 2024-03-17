@@ -1,0 +1,35 @@
+{% load goods_tags %}
+
+{% if goods.paginator.num_pages > 1 %}
+<div class="pagination" data-pagination-num="{{ goods.number }}">
+    <div class="pagination">
+        <div class="pagination-links">
+            {% if goods.has_previous %}
+                <li>
+                    <a href="?{% change_params page=goods.previos_page_number %}">&lt;&lt;</a>
+                </li>
+                <li>
+                    <a href="?{% change_params page=goods.previos_page_number %}">&lt;</a>
+                </li>
+            {% endif %}
+
+            {% for num in goods.paginator.page_range %}
+            {% if num >= goods.number|add:-2 and num <= goods.number|add:2 %}
+                <li {% if num == goods.number %}class="active_pag"{% endif %}>
+                    <a href="?{% change_params page=num %}">{{ num }}</a>
+                </li>
+            {% endif %}
+            {% endfor %}
+
+            {% if goods.has_next %}
+                <li>
+                    <a href="?{% change_params page=goods.next_page_number %}">&gt;</a>
+                </li>
+                <li>
+                    <a href="?{% change_params page=goods.paginator.num_pages %}">&gt;&gt;</a>
+                </li>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endif %}

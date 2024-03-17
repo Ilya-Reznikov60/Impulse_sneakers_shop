@@ -9,7 +9,11 @@
             {% else %}
                 <li><a href="{% url "main:info" %}">Информация</a></li>
             {% endif %}
-            <li><a href="new_items.html">Новинки</a></li>
+            {% if is_new_items_page %}
+                <li class="new-items-link"><a href="{% url "catalog:new_items" %}">Новинки</a></li>
+            {% else %}
+                <li><a href="{% url "catalog:new_items" %}">Новинки</a></li>
+            {% endif %}
             {% if is_catalog_page or is_product_page %}
                 <li class="catalog-link"><a href="{% url "catalog:index" %}">Каталог</a>
             {% else %}
@@ -49,7 +53,7 @@
     </div>
     <div class="dropdown_menu">
         <li><a href="{% url "main:info" %}">Информация</a></li>
-        <li><a href="new_items.html">Новинки</a></li>
+        <li><a href="{% url "catalog:new_items" %}">Новинки</a></li>
         <li><a href="{% url "catalog:index" %}">Каталог</a></li>
         <li><a href="sale.html">Распродажа</a></li>
         <li>

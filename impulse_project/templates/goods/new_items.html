@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+{% load static %}
+{% load goods_tags %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/style_new.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_new_catalog.css" %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container category-page">
+        {% include "goods/includes/goods_breadcrumbs.html" with breadcrumb_name="Новинки" %}
+        <div class="category-page-header">
+            <div class="page-header-left">
+                <h2 class="page-header-title">Новинки обуви 2024</h2>
+            </div>
+            <div class="page-header-right">
+                <form method="get" id="sort-form">
+                    <div class="sort-filter">
+                        <label for="sort-select">Сортировка:</label>
+                        <select class="sort-select" name="sort_by" id="sort-select">
+                            <option value="date">По дате добавления</option>
+                            <option value="price-asc">По цене (по возрастанию)</option>
+                            <option  type="radio" name="order_by" value="price-desc" {% if request.GET.order_by == 'price-desc' %}checked{% endif %}>По цене (по убыванию)</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="catalog new-products">
+            <div class="catalog-new__columns">
+                <div class="catalog-new__column catalog-new__column--sidebar">
+                    <div class="catalog-filters__box catalog-filters__box--open" onclick="closeTab(this);">
+                        <h5 class="catalog-filters__box-title">
+                            Обувь
+                        </h5>
+                        <div class="catalog-filters__box-content">
+                            <ul class="catalog-filters__box-list">
+                                {% tag_categories as categories %}
+                                {% for category in categories %}
+                                    <li class="catalog-filters__box-list-item">
+                                        <a href="{% url 'catalog:catalog_by_category' category_slug=category.slug %}" class="catalog-filters__box-link" title="{{ category.name }}">
+                                            {{ category.name }}
+                                            <span class="catalog-filters__count" style="display: none">(13)</span>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="catalog__filters">
+                        <div class="catalog-filters">
+                            <div class="catalog-filters__box catalog-filters__box--open" onclick="closeTab(this);">
+                                <h5 class="catalog-filters__box-title">
+                                    Бренд
+                                </h5>
+                                <div class="catalog-filters__box-content">
+                                    <ul class="catalog-filters__box-list">
+                                        <li class="catalog-filters__box-list-item">
+                                            <label>
+                                                <input type="checkbox" class="filter-checkbox" value="nike">
+                                                Nike
+                                            </label>
+                                        </li>
+                                        <li class="catalog-filters__box-list-item">
+                                            <label>
+                                                <input type="checkbox" class="filter-checkbox" value="adidas">
+                                                Adidas
+                                            </label>
+                                        </li>
+                                        <li class="catalog-filters__box-list-item">
+                                            <label>
+                                                <input type="checkbox" class="filter-checkbox" value="new-balance">
+                                                New-balance
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="catalog-filters__box catalog-filters__box--open" onclick="closeTab(this);">
+                                <h5 class="catalog-filters__box-title">
+                                    Пол
+                                </h5>
+                                <div class="catalog-filters__box-content">
+                                    <ul class="catalog-filters__box-list">
+                                        <li class="catalog-filters__box-list-item">
+                                            <label>
+                                                <input type="checkbox" class="filter-checkbox" value="мужской">
+                                                Мужской
+                                            </label>
+                                        </li>
+                                        <li class="catalog-filters__box-list-item">
+                                            <label>
+                                                <input type="checkbox" class="filter-checkbox" value="женский">
+                                                Женский
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="catalog-filters__box catalog-filters__box--open" onclick="closeTab(this);">
+                                <h5 class="catalog-filters__box-title">
+                                    Сезон
+                                </h5>
+                                <div class="catalog-filters__box-content">
+                                    <ul class="catalog-filters__box-list">
+                                        <li class="catalog-filters__box-list-item">
+                                            <label>
+                                                <input type="checkbox" class="filter-checkbox" value="осень-зима">
+                                                Осень-Зима
+                                            </label>
+                                        </li>
+                                        <li class="catalog-filters__box-list-item">
+                                            <label>
+                                                <input type="checkbox" class="filter-checkbox" value="весна-лето">
+                                                Весна-Лето
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="catalog-new__column catalog-new__column--mainpage">
+                    <div class="new-products-carts">
+                        <div class="new-products-carts__list">
+                            {% for product in goods %}
+                            <div class="catalog-card__item">
+                                <div class="catalog-card">
+                                    <div class="catalog-card-image">
+                                        <div class="catalog-card-image__inner">
+                                            <picture class="image-wrapper-new">
+                                                {% if product.image %}
+                                                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                                {% endif %}
+                                            </picture>
+                                        </div>
+                                        <div class="catalog-card__labels catalog-card__labels--top--left">
+                                            <span class="catalog-card-label catalog-card-label--new">Новинка</span>
+                                        </div>
+                                        <div class="catalog-card__labels catalog-card__labels--top--right">
+                                            <span class="catalog-card-label catalog-card-label--favorite"><i
+                                                    class="fa-solid fa-heart"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="catalog-card__hover"></div>
+                                    <h5 class="catalog-card-title">
+                                        <a href="{% url "catalog:product" product.slug %}" calss="catalog-card__link" title="{{ product.name }}">
+                                            {{ product.name }}
+                                            <span class="catalog-card-link__area"></span>
+                                        </a>
+                                    </h5>
+                                    <div class="catalog-card-price">
+                                        <span class="catalog-card-price-value">
+                                            {{ product.price }} руб.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}                            
+                        </div>
+                    </div>
+                    {% include "goods/includes/paginator.html" %}
+                </div>
+            </div>
+        </div>
+        <button onclick="scrollToTop()" id="scrollToTopButton">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <script>
+        document.getElementById('sort-select').addEventListener('change', function() {
+            document.getElementById('sort-form').submit();
+        });
+    </script>
+
+    <script>
+        function closeTab(element) {
+            const title = element.querySelector('.catalog-filters__box-title');
+            const isOpen = element.classList.contains('catalog-filters__box--open');
+
+            if (isOpen) {
+                element.classList.remove('catalog-filters__box--open');
+            } else {
+                element.classList.add('catalog-filters__box--open');
+            }
+        }
+    </script>
+
+    <script>
+        function filterItems() {
+            const checkboxes = document.querySelectorAll('.filter-checkbox');
+            const items = document.querySelectorAll('.catalog-new__column--mainpage .catalog-item');
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    const checkedValues = Array.from(checkboxes)
+                        .filter(cb => cb.checked)
+                        .map(cb => cb.value);
+
+                    items.forEach(item => {
+                        const brand = item.dataset.brand;
+                        if (checkedValues.length === 0 || checkedValues.includes(brand)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+
+        // Вызов функции filterItems при загрузке страницы
+        document.addEventListener('DOMContentLoaded', filterItems);
+    </script>
+
+    <script>
+        function scrollToTop() {
+            const c = document.documentElement.scrollTop || document.body.scrollTop;
+            if (c > 0) {
+                window.requestAnimationFrame(scrollToTop);
+                window.scrollTo(0, c - c / 8);
+            }
+        }
+
+        window.onscroll = function () {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("scrollToTopButton").style.display = "block";
+            } else {
+                document.getElementById("scrollToTopButton").style.display = "none";
+            }
+        }
+    </script>
+{% endblock %}
