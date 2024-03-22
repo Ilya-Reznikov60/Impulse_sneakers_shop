@@ -19,9 +19,9 @@
                     <div class="sort-filter">
                         <label for="sort-select">Сортировка:</label>
                         <select class="sort-select" name="sort_by" id="sort-select">
-                            <option value="date">По дате добавления</option>
-                            <option value="price-asc">По цене (по возрастанию)</option>
-                            <option  type="radio" name="order_by" value="price-desc" {% if request.GET.order_by == 'price-desc' %}checked{% endif %}>По цене (по убыванию)</option>
+                            <option value="date" {% if request.GET.sort_by == 'date' %}selected{% endif %}>По дате добавления</option>
+                            <option value="price-asc" {% if request.GET.sort_by == 'price-asc' %}selected{% endif %}>По цене (по возрастанию)</option>
+                            <option value="price-desc" {% if request.GET.sort_by == 'price-desc' %}selected{% endif %}>По цене (по убыванию)</option>
                         </select>
                     </div>
                 </form>
