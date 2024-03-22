@@ -102,3 +102,24 @@ def new_items(request):
     }
 
     return render(request, 'goods/new_items.html', context)
+
+
+def sale_items(request):
+    '''
+    sale products function
+    '''
+    sale_goods = Product.objects.filter(discount__gt=0)
+
+    if request.method == 'GET' and 'sort_by' in request.GET:
+        sort_by = request.GET['sort_by']
+        sale_goods = sort_products(sale_goods, sort_by)
+
+    page_obj = get_page(request, sale_goods)
+
+    context = {
+        'title': 'Impulse - Распродажа',
+        'is_sale_items_page': True,
+        'goods': page_obj,
+    }
+
+    return render(request, 'goods/sale.html', context)

@@ -1,0 +1,87 @@
+[
+{
+    "model": "goods.product",
+    "pk": 1,
+    "fields": {
+        "name": "New Balance 574 \"black green\"",
+        "slug": "new-balance-574-black-green",
+        "description": "Одни из самых культовых и упоминаемых кроссовок New Balance 574 первоначально были разработаны для бега и обеспечивали повышенный комфорт. Было это в 1988 году и с тех пор они остаются популярными, приобрели влиятельный повседневный дизайн и неоднократно переиздавались.",
+        "image": "goods_images/New_Balance_574_Xibymju.jpg",
+        "price": 18990,
+        "discount": "10.00",
+        "quantity": 1,
+        "avaliable": true,
+        "category": 2,
+        "specifications": 1,
+        "is_new": false
+    }
+},
+{
+    "model": "goods.product",
+    "pk": 2,
+    "fields": {
+        "name": "Adidas Forum Mod Low",
+        "slug": "adidas-forum-mod-low",
+        "description": "Adidas Forum Mod Low – это современная интерпретация классических баскетбольных кроссовок Adidas Forum, выполненная из смешанного текстиля, напоминающего наряд пугала. Цветовая гамма, выполненная в основном в оттенках загара, дополнена смелыми оранжевыми акцентами на подкладке носка, пятке и язычке.",
+        "image": "goods_images/adidas_forum_mod_low.jpg",
+        "price": 16499,
+        "discount": "20.00",
+        "quantity": 2,
+        "avaliable": true,
+        "category": 3,
+        "specifications": 2,
+        "is_new": false
+    }
+},
+{
+    "model": "goods.product",
+    "pk": 3,
+    "fields": {
+        "name": "New Balance 574 \"grey orange\"",
+        "slug": "new-balance-574-grey-orange",
+        "description": "Одни из самых культовых и упоминаемых кроссовок New Balance 574 первоначально были разработаны для бега и обеспечивали повышенный комфорт. Было это в 1988 году и с тех пор они остаются популярными, приобрели влиятельный повседневный дизайн и неоднократно переиздавались.",
+        "image": "goods_images/109666270299.jpg",
+        "price": 18990,
+        "discount": "0.00",
+        "quantity": 1,
+        "avaliable": true,
+        "category": 2,
+        "specifications": 3,
+        "is_new": true
+    }
+},
+{
+    "model": "goods.product",
+    "pk": 4,
+    "fields": {
+        "name": "Puma Morphic Retro",
+        "slug": "puma-morphic-retro",
+        "description": "Если понятие разумного потребления — не пустые слова для тебя, то потрясающие своим дизайном кроссовки PUMA Morphic точно должны быть в твоей сникер-коллекции. Модель частично выполнена из переработанного сырья. Казалось бы, лишь пара обуви, но такой весомый вклад в лучшее будущее на нашей планете. Легкий сетчатый верх — еще одна причина, по которой ты не захочешь пройти мимо этой пары. Он отлично пропускает воздух, обеспечивая оптимальный уровень вентиляции в течение всего дня.",
+        "image": "goods_images/110385280299.jpg",
+        "price": 13999,
+        "discount": "0.00",
+        "quantity": 5,
+        "avaliable": true,
+        "category": 2,
+        "specifications": 4,
+        "is_new": false
+    }
+},
+{
+    "model": "goods.product",
+    "pk": 5,
+    "fields": {
+        "name": "Kappa Renzo Trail",
+        "slug": "kappa-renzo-trail",
+        "description": "Объемная подошва этих трендовых кроссов легко поднимет тебя над обыденностью и поможет не ходить, а парить весь день, ведь она выполнена из упругого ЭВА. И это только одна из многих стильных и в тоже время функциональных деталей, из которых созданы Kappa Renzo Trail. Возьми, к примеру, прочную резиновую подошву. С ней можно уверенно покорять любые горизонты — ноги точно не будут скользить. Но помимо этого она невероятно круто смотрится благодаря выраженному рисунку протектора. Одним словом, тот, кто создал кроссы Kappa Renzo Trail, знал толк в путешествиях!",
+        "image": "goods_images/Kappa_Renzo_Trail.jpg",
+        "price": 7500,
+        "discount": "0.00",
+        "quantity": 3,
+        "avaliable": true,
+        "category": 2,
+        "specifications": 5,
+        "is_new": true
+    }
+}
+]

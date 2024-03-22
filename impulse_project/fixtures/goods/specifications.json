@@ -1,0 +1,57 @@
+[
+{
+    "model": "goods.specification",
+    "pk": 1,
+    "fields": {
+        "name": "New Balance 574 \"black green\"",
+        "gender": "мужской",
+        "color": "Чёрный / Серый",
+        "country": "Вьетнам",
+        "composition": "Замша / Синтетика / Текстиль / Резина"
+    }
+},
+{
+    "model": "goods.specification",
+    "pk": 2,
+    "fields": {
+        "name": "Adidas Forum Mod Low",
+        "gender": "мужской",
+        "color": "белый / коричневый / зеленый",
+        "country": "Китай",
+        "composition": "Синтетическая кожа / Текстиль / Резина"
+    }
+},
+{
+    "model": "goods.specification",
+    "pk": 3,
+    "fields": {
+        "name": "New Balance 574 \"grey orange\"",
+        "gender": "мужской",
+        "color": "Серый / Оранжевый",
+        "country": "Вьетнам",
+        "composition": "Замша / Синтетика / Текстиль / Резина"
+    }
+},
+{
+    "model": "goods.specification",
+    "pk": 4,
+    "fields": {
+        "name": "Puma Morphic Retro",
+        "gender": "мужской",
+        "color": "черный / бежевый",
+        "country": "Китай",
+        "composition": "Текстиль / Резина"
+    }
+},
+{
+    "model": "goods.specification",
+    "pk": 5,
+    "fields": {
+        "name": "Kappa Renzo Trail",
+        "gender": "мужской",
+        "color": "графитовый",
+        "country": "Вьетнам",
+        "composition": "Полиэстер / Синтетика / Резина"
+    }
+}
+]

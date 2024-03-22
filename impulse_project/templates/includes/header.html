@@ -32,7 +32,11 @@
                     </div>
                 </div>
             </li>
-            <li><a href="sale.html" class="links-sale">Распродажа</a></li>
+            {% if is_sale_items_page %}
+                <li><a href="{% url "catalog:sale" %}" class="links-sale links-sale--active">Распродажа</a></li>
+            {% else %}
+                <li><a href="{% url "catalog:sale" %}" class="links-sale">Распродажа</a></li>
+            {% endif %}
         </ul>
         <form class="search-form">
             <input type="text" placeholder="Искать здесь...">
@@ -55,7 +59,7 @@
         <li><a href="{% url "main:info" %}">Информация</a></li>
         <li><a href="{% url "catalog:new_items" %}">Новинки</a></li>
         <li><a href="{% url "catalog:index" %}">Каталог</a></li>
-        <li><a href="sale.html">Распродажа</a></li>
+        <li><a href="{% url "catalog:sale" %}">Распродажа</a></li>
         <li>
             <form class="search-form">
                 <input type="text" placeholder="Искать здесь...">

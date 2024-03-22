@@ -84,17 +84,32 @@
                     </h2>
                     <div class="single-product-page__box">
                         <div class="single-product-page__price">
-                            <span class="commerce-product-price amount">
-                                {{ product.price }} руб.
-                            </span>
+                            {% if product.discount %}
+                                <span class="commerce-product-price sale">
+                                    {{ product.price }} руб.
+                                </span>
+                                <span class="commerce-product-price amount">
+                                    {{ product.sell_price|floatformat:"0" }} руб.
+                                </span>
+                            {% else %}
+                                <span class="commerce-product-price amount">
+                                    {{ product.price }} руб.
+                                </span>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="single-product-page__box2">
                         <div class="single-product-page__colors-title">Доступные цвета:</div>
                         <div class="single-product-page__colors">
-                            <a href="nb574_go.html" title class="single-product-page__color">
-                                <img src="{% static "image/109666270299.jpg" %}" class="ls-is-cached lazyloaded" alt="">
-                            </a>
+                            {% with product_color=product.specifications.color %}
+                            {% for prod in product.category.products.all %}
+                                {% if prod.specifications.color == product_color and prod != product %}
+                                    <a href="#" title="{{ prod.specifications.color }}" class="single-product-page__color">
+                                        <img src="{{ prod.image.url }}" alt="{{ prod.specifications.color }}">
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                            {% endwith %}
                         </div>
                         <form class="variations_form cart" action="">
                             <div class="label-size_box">

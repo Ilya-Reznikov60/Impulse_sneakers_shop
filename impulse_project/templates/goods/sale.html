@@ -1,127 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% load static %}
+{% load goods_tags %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impulse</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/style_one.css">
-    <link rel="stylesheet" href="css/style_body.css">
-    <link rel="stylesheet" href="css/style_footer.css">
-    <link rel="stylesheet" href="css/style_news.css">
-    <link rel="stylesheet" href="css/style_new.css">
-    <link rel="stylesheet" href="css/style_new_catalog.css">
-    <link rel="stylesheet" href="css/style_catalog.css">
-    <link rel="stylesheet" href="css/style_sale.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-    <link rel="manifest" href="favicon/site.webmanifest">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-</head>
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/style_new.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_new_catalog.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_catalog.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_sale.css" %}">
+{% endblock %}
 
-<body>
-    <header>
-        <div class="navbar">
-            <div class="logo"><a href="index.html">Impulse</a></div>
-            <ul class="links">
-                <li><a href="information.html">Информация</a></li>
-                <li><a href="new_items.html">Новинки</a></li>
-                <li><a href="catalog.html">Каталог</a>
-                    <div class="mega-menu">
-                        <div class="mega-menu-content">
-                            <ul class="menu-list">
-                                <li class="menu-item">
-                                    <a href="#">Кроссовки</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Кеды</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Зимняя обувь</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Сланцы</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li><a href="sale.html" class="links-sale links-sale--active">Распродажа</a></li>
-            </ul>
-            <form class="search-form">
-                <input type="text" placeholder="Искать здесь...">
-                <button type="submit"></button>
-            </form>
-            <div class="cart-icon">
-                <a href="cart"><i class="fa-solid fa-shopping-cart"></i></a>
-            </div>
-            <div class="favorite-icon">
-                <a href="favorite"><i class="fa-solid fa-heart"></i></a>
-            </div>
-            <div class="profile-icon">
-                <a href="login"><i class="fa-solid fa-user"></i></a>
-            </div>
-            <div class="toggle_button">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-        </div>
-        <div class="dropdown_menu">
-            <li><a href="information.html">Информация</a></li>
-            <li><a href="new_items.html">Новинки</a></li>
-            <li><a href="catalog.html">Каталог</a></li>
-            <li><a href="sale.html">Распродажа</a></li>
-            <li>
-                <form class="search-form">
-                    <input type="text" placeholder="Искать здесь...">
-                    <button type="submit"></button>
-                </form>
-            </li>
-        </div>
-    </header>
-
+{% block content %}
     <div class="container category-page">
-        <ol class="breadcrumbs" itemscope="">
-            <li class="breadcrumbs__item" itemprop="itemListElement" itemscope="">
-                <a class="breadcrumbs__link" itemprop="item" href="/">
-                    <span itemprop="name">
-                        Главная
-                    </span>
-                </a>
-                <meta itemprop="position" content="1">
-            </li>
-            <li class="breadcrumbs__item" itemprop="itemListElement" itemscope="">
-                <span itemprop="item" content="isnew">
-                    <span itemprop="name">
-                        Распродажа
-                    </span>
-                </span>
-                <meta itemprop="position" content="2">
-            </li>
-        </ol>
+        {% include "goods/includes/goods_breadcrumbs.html" with breadcrumb_name="Распродажа" %}
         <div class="category-page-header">
             <div class="page-header-left">
                 <h2 class="page-header-title">Распродажа</h2>
             </div>
             <div class="page-header-right">
-                <div class="sort-filter">
-                    <label for="sort-select">Сортировка:</label>
-                    <select class="sort-select">
-                        <option value="date">По дате добавления</option>
-                        <option value="price-asc">По цене (по возрастанию)</option>
-                        <option value="price-desc">По цене (по убыванию)</option>
-                    </select>
-                </div>
+                <form method="get" id="sort-form">
+                    <div class="sort-filter">
+                        <label for="sort-select">Сортировка:</label>
+                        <select class="sort-select" name="sort_by" id="sort-select">
+                            <option value="date">По дате добавления</option>
+                            <option value="price-asc">По цене (по возрастанию)</option>
+                            <option  type="radio" name="order_by" value="price-desc" {% if request.GET.order_by == 'price-desc' %}checked{% endif %}>По цене (по убыванию)</option>
+                        </select>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="catalog new-products">
@@ -133,30 +38,15 @@
                         </h5>
                         <div class="catalog-filters__box-content">
                             <ul class="catalog-filters__box-list">
-                                <li class="catalog-filters__box-list-item">
-                                    <a href="" class="catalog-filters__box-link" title="Зимняя обувь">
-                                        Зимняя обувь
-                                        <span class="catalog-filters__count" style="display: none">(13)</span>
-                                    </a>
-                                </li>
-                                <li class="catalog-filters__box-list-item">
-                                    <a href="" class="catalog-filters__box-link" title="Кроссовки">
-                                        Кроссовки
-                                        <span class="catalog-filters__count" style="display: none">(13)</span>
-                                    </a>
-                                </li>
-                                <li class="catalog-filters__box-list-item">
-                                    <a href="" class="catalog-filters__box-link" title="Сланцы">
-                                        Сланцы
-                                        <span class="catalog-filters__count" style="display: none">(13)</span>
-                                    </a>
-                                </li>
-                                <li class="catalog-filters__box-list-item">
-                                    <a href="" class="catalog-filters__box-link" title="Кеды">
-                                        Кеды
-                                        <span class="catalog-filters__count" style="display: none">(13)</span>
-                                    </a>
-                                </li>
+                                {% tag_categories as categories %}
+                                {% for category in categories %}
+                                    <li class="catalog-filters__box-list-item">
+                                        <a href="{% url 'catalog:catalog_by_category' category_slug=category.slug %}" class="catalog-filters__box-link" title="{{ category.name }}">
+                                            {{ category.name }}
+                                            <span class="catalog-filters__count" style="display: none">(13)</span>
+                                        </a>
+                                    </li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
@@ -237,16 +127,19 @@
                 <div class="catalog-new__column catalog-new__column--mainpage">
                     <div class="new-products-carts">
                         <div class="new-products-carts__list">
+                            {% for product in goods %}
                             <div class="catalog-card__item">
                                 <div class="catalog-card">
                                     <div class="catalog-card-image">
                                         <div class="catalog-card-image__inner">
                                             <picture class="image-wrapper-new">
-                                                <img src="image/109666270299.jpg" alt="New Balance 574">
+                                                {% if product.image %}
+                                                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                                {% endif %}
                                             </picture>
                                         </div>
                                         <div class="catalog-card__labels catalog-card__labels--top--left">
-                                            <span class="catalog-card-label catalog-card-label--new">-30%</span>
+                                            <span class="catalog-card-label catalog-card-label--new">-{{ product.discount|floatformat:"-2" }}%</span>
                                         </div>
                                         <div class="catalog-card__labels catalog-card__labels--top--right">
                                             <span class="catalog-card-label catalog-card-label--favorite"><i
@@ -255,211 +148,25 @@
                                     </div>
                                     <div class="catalog-card__hover"></div>
                                     <h5 class="catalog-card-title">
-                                        <a href="nb574_go.html" calss="catalog-card__link" title="New Balance 574">
-                                            New Balance 574
+                                        <a href="{% url "catalog:product" product.slug %}" calss="catalog-card__link" title="{{ product.name }}">
+                                            {{ product.name }}
                                             <span class="catalog-card-link__area"></span>
                                         </a>
                                     </h5>
                                     <div class="catalog-card-price">
                                         <span class="catalog-card-price-value catalog-card-price-value--old">
-                                            18 990 руб.
+                                            {{ product.price }} руб.
                                         </span>
                                         <span class="catalog-card-price-value__sale">
-                                            13 999 руб.
+                                            {{ product.sell_price|floatformat:"0" }} руб.
                                         </span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="catalog-card__item">
-                                <div class="catalog-card">
-                                    <div class="catalog-card-image">
-                                        <div class="catalog-card-image__inner">
-                                            <picture class="image-wrapper-new">
-                                                <img src="image/adidas forum mod low.jpg" alt="Adidas Forum Mod Low">
-                                            </picture>
-                                        </div>
-                                        <div class="catalog-card__labels catalog-card__labels--top--left">
-                                            <span class="catalog-card-label catalog-card-label--new">-20%</span>
-                                        </div>
-                                        <div class="catalog-card__labels catalog-card__labels--top--right">
-                                            <span class="catalog-card-label catalog-card-label--favorite"><i
-                                                    class="fa-solid fa-heart"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="catalog-card__hover"></div>
-                                    <h5 class="catalog-card-title">
-                                        <a href="adidas_FML.html" calss="catalog-card__link"
-                                            title="Adidas Forum Mod Low">
-                                            Adidas Forum Mod Low
-                                            <span class="catalog-card-link__area"></span>
-                                        </a>
-                                    </h5>
-                                    <div class="catalog-card-price">
-                                        <span class="catalog-card-price-value catalog-card-price-value--old">
-                                            16 499 руб.
-                                        </span>
-                                        <span class="catalog-card-price-value__sale">
-                                            12 899 руб.
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="catalog-card__item">
-                                <div class="catalog-card">
-                                    <div class="catalog-card-image">
-                                        <div class="catalog-card-image__inner">
-                                            <picture class="image-wrapper-new">
-                                                <img src="image/Reebok Classic Leather.jpg"
-                                                    alt="Reebok Classic Leather">
-                                            </picture>
-                                        </div>
-                                        <div class="catalog-card__labels catalog-card__labels--top--left">
-                                            <span class="catalog-card-label catalog-card-label--new">-50%</span>
-                                        </div>
-                                        <div class="catalog-card__labels catalog-card__labels--top--right">
-                                            <span class="catalog-card-label catalog-card-label--favorite"><i
-                                                    class="fa-solid fa-heart"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="catalog-card__hover"></div>
-                                    <h5 class="catalog-card-title">
-                                        <a href="" calss="catalog-card__link" title="Reebok Classic Leather">
-                                            Reebok Classic Leather
-                                            <span class="catalog-card-link__area"></span>
-                                        </a>
-                                    </h5>
-                                    <div class="catalog-card-price">
-                                        <span class="catalog-card-price-value catalog-card-price-value--old">
-                                            13 499 руб.
-                                        </span>
-                                        <span class="catalog-card-price-value__sale">
-                                            6 349 руб.
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="catalog-card__item">
-                                <div class="catalog-card">
-                                    <div class="catalog-card-image">
-                                        <div class="catalog-card-image__inner">
-                                            <picture class="image-wrapper-new">
-                                                <img src="image/102323280299.jpg" alt="PUMA RS-X Efekt Speckle">
-                                            </picture>
-                                        </div>
-                                        <div class="catalog-card__labels catalog-card__labels--top--left">
-                                            <span class="catalog-card-label catalog-card-label--new">-30%</span>
-                                        </div>
-                                        <div class="catalog-card__labels catalog-card__labels--top--right">
-                                            <span class="catalog-card-label catalog-card-label--favorite"><i
-                                                    class="fa-solid fa-heart"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="catalog-card__hover"></div>
-                                    <h5 class="catalog-card-title">
-                                        <a href="" calss="catalog-card__link" title="PUMA RS-X Efekt Speckle">
-                                            PUMA RS-X Efekt Speckle
-                                            <span class="catalog-card-link__area"></span>
-                                        </a>
-                                    </h5>
-                                    <div class="catalog-card-price">
-                                        <span class="catalog-card-price-value catalog-card-price-value--old">
-                                            15 499 руб.
-                                        </span>
-                                        <span class="catalog-card-price-value__sale">
-                                            10 999 руб.
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="catalog-card__item">
-                                <div class="catalog-card">
-                                    <div class="catalog-card-image">
-                                        <div class="catalog-card-image__inner">
-                                            <picture class="image-wrapper-new">
-                                                <img src="image/109872830299.jpg" alt="Fila Trace Low">
-                                            </picture>
-                                        </div>
-                                        <div class="catalog-card__labels catalog-card__labels--top--left">
-                                            <span class="catalog-card-label catalog-card-label--new">-10%</span>
-                                        </div>
-                                        <div class="catalog-card__labels catalog-card__labels--top--right">
-                                            <span class="catalog-card-label catalog-card-label--favorite"><i
-                                                    class="fa-solid fa-heart"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="catalog-card__hover"></div>
-                                    <h5 class="catalog-card-title">
-                                        <a href="" calss="catalog-card__link" title="Fila Trace Low">
-                                            Fila Trace Low
-                                            <span class="catalog-card-link__area"></span>
-                                        </a>
-                                    </h5>
-                                    <div class="catalog-card-price">
-                                        <span class="catalog-card-price-value catalog-card-price-value--old">
-                                            9 699 руб.
-                                        </span>
-                                        <span class="catalog-card-price-value__sale">
-                                            8 999 руб.
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="catalog-card__item">
-                                <div class="catalog-card">
-                                    <div class="catalog-card-image">
-                                        <div class="catalog-card-image__inner">
-                                            <picture class="image-wrapper-new">
-                                                <img src="image/Termit Winter Pro 2.jpg" alt="Termit Winter Pro 2">
-                                            </picture>
-                                        </div>
-                                        <div class="catalog-card__labels catalog-card__labels--top--left">
-                                            <span class="catalog-card-label catalog-card-label--new">-30%</span>
-                                        </div>
-                                        <div class="catalog-card__labels catalog-card__labels--top--right">
-                                            <span class="catalog-card-label catalog-card-label--favorite"><i
-                                                    class="fa-solid fa-heart"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="catalog-card__hover"></div>
-                                    <h5 class="catalog-card-title">
-                                        <a href="" calss="catalog-card__link" title="Termit Winter Pro 2">
-                                            Termit Winter Pro 2
-                                            <span class="catalog-card-link__area"></span>
-                                        </a>
-                                    </h5>
-                                    <div class="catalog-card-price">
-                                        <span class="catalog-card-price-value catalog-card-price-value--old">
-                                            8 499 руб.
-                                        </span>
-                                        <span class="catalog-card-price-value__sale">
-                                            5 949 руб.
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
-                    <div class="pagination" data-pagination-num="1">
-                        <div class="pagination">
-                            <div class="pagination-links">
-                                <li class="active">
-                                    <a style="color:#ef0d22">1</a>
-                                </li>
-                                <li>
-                                    <a href="">2</a>
-                                </li>
-                                <li>
-                                    <a href="">3</a>
-                                </li>
-                                <li>
-                                    <a href="">></a>
-                                </li>
-                                <li>
-                                    <a href="">>|</a>
-                                </li>
-                            </div>
-                        </div>
-                    </div>
+                    {% include "goods/includes/paginator.html" %}
                 </div>
             </div>
         </div>
@@ -467,6 +174,12 @@
             <i class="fas fa-arrow-up"></i>
         </button>
     </div>
+
+    <script>
+        document.getElementById('sort-select').addEventListener('change', function() {
+            document.getElementById('sort-form').submit();
+        });
+    </script>
 
     <script>
         function closeTab(element) {
@@ -529,61 +242,4 @@
             }
         }
     </script>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-container">
-                <div class="col contact">
-                    <p>
-                        <a href="index.html" class="logo">Impulse</a>
-                    </p>
-                    <p>
-                        <i class="fa-solid fa-location-dot"></i> 125 Lenina Street, Krasnodar
-                    </p>
-                    <p>
-                        <i class="fa-solid fa-envelope"></i><a href="mailto:example@google.com">example@google.com</a>
-                    </p>
-                    <p>
-                        <i class="fa-solid fa-phone-volume"></i> 240-799-9093
-                    </p>
-                    <div class="social_media_links">
-                        <a href="http://vk.com" target="_blank">
-                            <i class="fa-brands fa-vk"></i>
-                        </a>
-                        <a href="http://github.com" target="_blank">
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-                        <a href="http://t.me" target="_blank">
-                            <i class="fa-brands fa-telegram"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col info">
-                    <h2>Информация</h2>
-                    <p>
-                        <a href="/">О нас</a>
-                    </p>
-                    <p>
-                        <a href="/">Контакты</a>
-                    </p>
-                    <p>
-                        <a href="/">Вопросы</a>
-                    </p>
-                    <p>
-                        <a href="/">Политика конфиденциальности</a>
-                    </p>
-                </div>
-                <div class="col newsletter">
-                    <h2>Подпишись на последние новости</h2>
-                    <form action="" class="newsletter-form">
-                        <input type="text" placeholder="Your Email">
-                        <button>Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright">Copyright&copy;2024 Impulse</div>
-    </footer>
-</body>
-
-</html>
+{% endblock %}
