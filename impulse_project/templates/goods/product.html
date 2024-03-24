@@ -57,17 +57,15 @@
 
                 </script>
                 <div class="single-product-page__gallery module-lightbox">
-                    <img id="largeImage" src="{{ product.image.url }}" alt="Large Image" class="large-image"
-                        onclick="showImage('{{ product.image.url }}')">
+                    <img id="largeImage" src="{{ product.images.first.image.url }}" alt="Large Image" class="large-image"
+                        onclick="showImage('{{ product.images.first.image.url }}')">
                     <div class="small-images">
-                        <img src="{% static "image/New Balance 574-two.jpg" %}" alt="Small Image 1" class="small-image"
-                            onclick="showImage('{% static "image/New Balance 574-two.jpg" %}')">
-                        <img src="{% static "image/New-Balance574-three.jpg" %}" alt="Small Image 2" class="small-image"
-                            onclick="showImage('{% static "image/New-Balance574-three.jpg" %}')">
-                        <img src="{% static "image/New Balance 574-four.jpg" %}" alt="Small Image 3" class="small-image"
-                            onclick="showImage('{% static "image/New Balance 574-four.jpg" %}')">
-                        <img src="{% static "image/New Balance 574-six.jpg" %}" alt="Small Image 4" class="small-image"
-                            onclick="showImage('{% static "image/New Balance 574-six.jpg" %}')">
+                        {% for image in product.images.all %}
+                            {% if not forloop.first %} {# Проверяем, что это не первое изображение #}
+                                <img src="{{ image.image.url }}" alt="Small Image" class="small-image"
+                                    onclick="showImage('{{ image.image.url }}')">
+                            {% endif %}
+                        {% endfor %}
                     </div>
                     <div id="imageModal" class="modal">
                         <span class="close" onclick="closeModal()">&times;</span>
@@ -101,15 +99,11 @@
                     <div class="single-product-page__box2">
                         <div class="single-product-page__colors-title">Доступные цвета:</div>
                         <div class="single-product-page__colors">
-                            {% with product_color=product.specifications.color %}
-                            {% for prod in product.category.products.all %}
-                                {% if prod.specifications.color == product_color and prod != product %}
-                                    <a href="#" title="{{ prod.specifications.color }}" class="single-product-page__color">
-                                        <img src="{{ prod.image.url }}" alt="{{ prod.specifications.color }}">
-                                    </a>
-                                {% endif %}
-                            {% endfor %}
-                            {% endwith %}
+                            {% if product.related_product.images.first %}
+                                <a href="{% url 'catalog:product' product_slug=product.related_product.slug %}" title class="single-product-page__color">
+                                    <img src="{{ product.related_product.images.first.image.url }}" class="ls-is-cached lazyloaded" alt="">
+                                </a>
+                            {% endif %}
                         </div>
                         <form class="variations_form cart" action="">
                             <div class="label-size_box">
@@ -125,34 +119,11 @@
                                     <tr>
                                         <td class="value">
                                             <div class="custom-variations-wrapper">
-                                                <button class="variation-button out-of-stock"
-                                                    data-variation-id="3801">
-                                                    <div class="variation-button-name">38</div>
-                                                </button>
-                                                <button class="variation-button" data-variation-id="3901">
-                                                    <div class="variation-button-name">39</div>
-                                                </button>
-                                                <button class="variation-button" data-variation-id="4001">
-                                                    <div class="variation-button-name">40</div>
-                                                </button>
-                                                <button class="variation-button" data-variation-id="4101">
-                                                    <div class="variation-button-name">41</div>
-                                                </button>
-                                                <button class="variation-button" data-variation-id="4201">
-                                                    <div class="variation-button-name">42</div>
-                                                </button>
-                                                <button class="variation-button" data-variation-id="4301">
-                                                    <div class="variation-button-name">43</div>
-                                                </button>
-                                                <button class="variation-button" data-variation-id="4401">
-                                                    <div class="variation-button-name">44</div>
-                                                </button>
-                                                <button class="variation-button" data-variation-id="4501">
-                                                    <div class="variation-button-name">45</div>
-                                                </button>
-                                                <button class="variation-button" data-variation-id="4601">
-                                                    <div class="variation-button-name">46</div>
-                                                </button>
+                                                {% for size in product.sizes.all %}
+                                                    <button class="variation-button" data-variation-id="{{ size.id }}">
+                                                        <div class="variation-button-name">{{ size.name }}</div>
+                                                    </button>
+                                                {% endfor %}
                                             </div>
                                         </td>
                                     </tr>

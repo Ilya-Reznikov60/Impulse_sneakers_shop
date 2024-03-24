@@ -4,6 +4,24 @@ import string
 from django.db import models
 
 
+class Size(models.Model):
+    '''
+    Модель Размеров
+    '''
+    name = models.CharField(
+        max_length=10,
+        verbose_name='Наименование размера'
+    )
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Размер'
+        verbose_name_plural = 'Размеры'
+
+    def __str__(self):
+        return self.name
+
+
 class Specification(models.Model):
     '''
     Модель Характеристик
@@ -74,11 +92,6 @@ class Product(models.Model):
     description = models.TextField(
         blank=True, null=True, verbose_name='Описание продукта'
     )
-    image = models.ImageField(
-        upload_to='goods_images',
-        blank=True, null=True,
-        verbose_name='Изображение'
-    )
     price = models.IntegerField(
         default=0,
         verbose_name='Цена'
@@ -113,6 +126,17 @@ class Product(models.Model):
         default=False,
         verbose_name='Новый продукт'
     )
+    sizes = models.ManyToManyField(
+        'Size',
+        related_name='products_sizes',
+        verbose_name='Размеры'
+    )
+    related_product = models.ForeignKey(
+        'self',
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True
+    )
 
     class Meta:
         ordering = ('name',)
@@ -131,3 +155,24 @@ class Product(models.Model):
         discount_amount = self.price * (self.discount / 100)
         discounted_price = self.price - discount_amount
         return discounted_price
+
+
+class ProductImage(models.Model):
+    '''
+    Модель Изображения
+    '''
+    product = models.ForeignKey(
+        Product,
+        related_name='images',
+        on_delete=models.CASCADE,
+        verbose_name='Продукт'
+    )
+    image = models.ImageField(
+        upload_to='goods_images',
+        blank=True, null=True,
+        verbose_name='Изображение'
+    )
+
+    class Meta:
+        verbose_name = 'Изображение'
+        verbose_name_plural = 'Изображения'
