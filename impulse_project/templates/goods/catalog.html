@@ -20,7 +20,8 @@
         {% endif %}
         <div class="page-header-right">
             <form method="get" id="sort-form">
-            <div class="sort-filter">
+                <input type="hidden" name="q" value="{{ request.GET.q }}">
+                <div class="sort-filter">
                     <label for="sort-select">Сортировка:</label>
                     <select class="sort-select" name="sort_by" id="sort-select">
                         <option value="date" {% if request.GET.sort_by == 'date' %}selected{% endif %}>По дате добавления</option>
