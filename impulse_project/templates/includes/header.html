@@ -38,8 +38,8 @@
                 <li><a href="{% url "catalog:sale" %}" class="links-sale">Распродажа</a></li>
             {% endif %}
         </ul>
-        <form class="search-form">
-            <input type="text" placeholder="Искать здесь...">
+        <form class="search-form" role="search" action="{% url "catalog:search" %}" method="get">
+            <input type="text" name="q" placeholder="Искать здесь...">
             <button type="submit"></button>
         </form>
         <div class="cart-icon">
