@@ -146,10 +146,8 @@ class Product(models.Model):
     def __str__(self):
         return f'{self.name} Количество - {self.quantity}'
 
-    def generate_sku(self):
-        letters_and_digits = string.ascii_letters + string.digits
-        random_part = ''.join(random.choices(letters_and_digits, k=6))
-        return f'{random_part}_{self.id}'
+    def display_id(self):
+        return f"{self.id:05}"
 
     def sell_price(self):
         discount_amount = self.price * (self.discount / 100)
