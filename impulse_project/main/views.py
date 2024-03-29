@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 
-from goods.models import Category
+from goods.models import Category, Product
 
 
 def index(request):
@@ -10,9 +10,11 @@ def index(request):
     Index function
     '''
     categories = Category.objects.all()
+    goods = Product.objects.all()
     context = {
         'title': 'Impulse - Главная',
         'categories': categories,
+        'goods': goods,
     }
 
     return render(request, 'main/index.html', context)
