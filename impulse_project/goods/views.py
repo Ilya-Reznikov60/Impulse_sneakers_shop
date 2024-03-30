@@ -71,12 +71,13 @@ def catalog_by_category(request, category_slug=None):
 
     if category_slug == 'all':
         products = Product.objects.all()
-        category = None
-    elif query:
+    elif query and query.strip():
         products = q_search(query)
-    else:
+    elif category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         products = Product.objects.filter(category=category)
+    else:
+        products = Product.objects.all()
 
     if request.method == 'GET' and 'sort_by' in request.GET:
         sort_by = request.GET['sort_by']
