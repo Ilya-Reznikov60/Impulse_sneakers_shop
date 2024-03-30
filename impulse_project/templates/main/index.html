@@ -59,100 +59,31 @@
                 </div>
                 <div class="news-cards">
                     <div class="news-list">
+                        {% for news_item in news|slice:":4" %}
                         <div class="news-card">
                             <div class="news-body-card">
                                 <div class="news-card-img">
-                                    <img src="{% static "image/history.jpg" %}" alt="News 1">
+                                    <img src="{{ news_item.image.url }}" alt="{{ news_item.title }}">
                                     <div class="picture-news">
                                         <picture class="picture-news-img">
-                                            <img src="{% static "image/history.jpg" %}" alt="История развития кроссовок" data-lazyload
+                                            <img src="{{ news_item.image.url }}" alt="История развития кроссовок" data-lazyload
                                                 class="loaded" data-was-processed="true" height="189.58px" width="288">
                                         </picture>
                                     </div>
                                 </div>
                                 <h5 class="news-title-small">
-                                    <a href="/" class="news-title-small-link" title="История развития кроссовок">
-                                        История развития кроссовок
+                                    <a href="/" class="news-title-small-link" title="{{ news_item.title }}">
+                                        {{ news_item.title }}
                                         <span class="news-card-link-area"></span>
                                     </a>
                                 </h5>
                                 <p class="news-text">
-                                    Коротко об истории создания кроссовок
+                                    {{ news_item.description }}
                                 </p>
-                                <time class="news-published-date">28.01.2024</time>
+                                <time class="news-published-date">{{ news_item.published_date }}</time>
                             </div>
                         </div>
-                        <div class="news-card">
-                            <div class="news-body-card">
-                                <div class="news-card-img">
-                                    <img src="{% static "image/world.jpg" %}" alt="News 2">
-                                    <div class="picture-news">
-                                        <picture class="picture-news-img">
-                                            <img src="{% static "image/world.jpg" %}" alt="Мир моды" data-lazyload class="loaded"
-                                                data-was-processed="true" height="189.58px" width="288">
-                                        </picture>
-                                    </div>
-                                </div>
-                                <h5 class="news-title-small">
-                                    <a href="/" class="news-title-small-link" title="Мир моды">
-                                        Что происходит в мире моды сейчас
-                                        <span class="news-card-link-area"></span>
-                                    </a>
-                                </h5>
-                                <p class="news-text">
-                                    Последние события из мира моды
-                                </p>
-                                <time class="news-published-date">27.01.2024</time>
-                            </div>
-                        </div>
-                        <div class="news-card">
-                            <div class="news-body-card">
-                                <div class="news-card-img">
-                                    <img src="{% static "image/nike-dunk-low-teddy-bear-brown-dz5350-288-5.webp" %}" alt="News 3">
-                                    <div class="picture-news">
-                                        <picture class="picture-news-img">
-                                            <img src="{% static "image/nike-dunk-low-teddy-bear-brown-dz5350-288-5.webp" %}"
-                                                alt="Что там у Nike?" data-lazyload class="loaded"
-                                                data-was-processed="true" height="189.58px" width="288">
-                                        </picture>
-                                    </div>
-                                </div>
-                                <h5 class="news-title-small">
-                                    <a href="/" class="news-title-small-link" title="Новая пара кроссовок">
-                                        Что там у Nike?
-                                        <span class="news-card-link-area"></span>
-                                    </a>
-                                </h5>
-                                <p class="news-text">
-                                    Последняя пара из линейки Nike поражает воображение
-                                </p>
-                                <time class="news-published-date">26.01.2024</time>
-                            </div>
-                        </div>
-                        <div class="news-card">
-                            <div class="news-body-card">
-                                <div class="news-card-img">
-                                    <img src="{% static "image/-QBnWQPOad8.jpg.8b898e5bee32f10ba4bd6ea97afd4106.jpg" %}" alt="News 4">
-                                    <div class="picture-news">
-                                        <picture class="picture-news-img">
-                                            <img src="{% static "image/-QBnWQPOad8.jpg.8b898e5bee32f10ba4bd6ea97afd4106.jpg" %}"
-                                                alt="Кроссовки и звёзды" data-lazyload class="loaded"
-                                                data-was-processed="true" height="189.58px" width="288">
-                                        </picture>
-                                    </div>
-                                </div>
-                                <h5 class="news-title-small">
-                                    <a href="/" class="news-title-small-link" title="Кроссовки и звёзды">
-                                        Звёзды и кроссовки
-                                        <span class="news-card-link-area"></span>
-                                    </a>
-                                </h5>
-                                <p class="news-text">
-                                    Расскажем какие кроссовки сейчас популярны у звёзд
-                                </p>
-                                <time class="news-published-date">25.01.2024</time>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
