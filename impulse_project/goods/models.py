@@ -2,6 +2,7 @@ import random
 import string
 
 from django.db import models
+from django.utils import timezone
 
 
 class Size(models.Model):
@@ -136,6 +137,10 @@ class Product(models.Model):
         on_delete=models.SET_NULL,
         blank=True,
         null=True
+    )
+    created_at = models.DateTimeField(
+        default=timezone.now,
+        verbose_name='Дата и время добавления продукта'
     )
 
     class Meta:

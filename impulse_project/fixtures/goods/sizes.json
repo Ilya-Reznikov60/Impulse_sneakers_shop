@@ -1,0 +1,65 @@
+[
+{
+  "model": "goods.size",
+  "pk": 1,
+  "fields": {
+    "name": "38"
+  }
+},
+{
+  "model": "goods.size",
+  "pk": 2,
+  "fields": {
+    "name": "39"
+  }
+},
+{
+  "model": "goods.size",
+  "pk": 3,
+  "fields": {
+    "name": "40"
+  }
+},
+{
+  "model": "goods.size",
+  "pk": 4,
+  "fields": {
+    "name": "41"
+  }
+},
+{
+  "model": "goods.size",
+  "pk": 5,
+  "fields": {
+    "name": "42"
+  }
+},
+{
+  "model": "goods.size",
+  "pk": 6,
+  "fields": {
+    "name": "43"
+  }
+},
+{
+  "model": "goods.size",
+  "pk": 7,
+  "fields": {
+    "name": "44"
+  }
+},
+{
+  "model": "goods.size",
+  "pk": 8,
+  "fields": {
+    "name": "45"
+  }
+},
+{
+  "model": "goods.size",
+  "pk": 9,
+  "fields": {
+    "name": "46"
+  }
+}
+]
