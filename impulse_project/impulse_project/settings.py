@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
     'main.apps.MainConfig',
     'goods.apps.GoodsConfig',
 ]
@@ -80,9 +81,9 @@ WSGI_APPLICATION = 'impulse_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': '9854a',
+        'NAME': 'impulse',
+        'USER': 'impulse',
+        'PASSWORD': 'Digital128',
         'HOST': 'localhost',
         'PORT': '5432',
     }

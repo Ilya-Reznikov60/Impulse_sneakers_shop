@@ -158,7 +158,13 @@
                                 <div class="catalog-card__hover"></div>
                                 <h5 class="catalog-card-title">
                                     <a href="{% url "catalog:product" product.slug %}" calss="catalog-card__link" title="{{ product.name }}">
-                                        {{ product.name }}
+                                        {% autoescape off %}
+                                            {% if product.headline %}
+                                                {{ product.headline }}
+                                            {% else %}
+                                                {{ product.name }}
+                                            {% endif %}
+                                        {% endautoescape %}
                                         <span class="catalog-card-link__area"></span>
                                     </a>
                                 </h5>
