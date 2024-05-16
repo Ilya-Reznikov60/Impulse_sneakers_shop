@@ -1,0 +1,68 @@
+{% extends "auth_base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/style_login_version_two.css" %}">
+{% endblock %}
+
+{% block content %}
+    <div class="form_container">
+        <div class="left">
+            <div class="login-container">
+                <h2>Здравствуйте, уважаемый посетитель!</h2>
+                <span class="subtitle">
+                    С возвращением, введите пожалуйста свои данные
+                </span>
+
+                <button class="vk_button">
+                    <img src="{% static "image/pngwing.com.png" %}" alt="vk">
+                    Войти с помощью ВК
+                </button>
+
+                <div class="line-login">
+                    <span></span>
+                    <small>или</small>
+                    <span></span>
+                </div>
+
+                <form class="login-form" action="">
+                    <input type="email" placeholder="Email">
+                    <input type="password" placeholder="Пароль">
+
+
+                    <div class="actions-login">
+                        <div class="wrapper-login">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">Запомнить меня</label>
+                        </div>
+                        <a href="password_reset_form.html">Забыли пароль?</a>
+                    </div>
+
+                    <button type="submit" class="login_btn">
+                        Войти
+                    </button>
+                </form>
+
+                <p class="signup_info">
+                    Ещё нет аккаунта? <a href="{% url "user:registration" %}">Зарегистрироваться</a>
+                </p>
+                <p class="signup_home">
+                    Домой: <a href="{% url "main:index" %}" class="home_link">Главная</a>
+                </p>
+            </div>
+        </div>
+        <div class="right" style="background-image: url('{% static "image/freepik-export-20240430075844x13L.jpeg" %}')">
+            <div class="info-login">
+                <p>Авторизуйтесь и погрузитесь в мир высокой моды. Независимо от того,
+                    хотите ли вы совершить покупки, или просто исследовать ассортимент.
+                    Наша платформа - это доступ ко всем возможностям.
+                </p>
+                <h2>Impulse</h2>
+                <div class="login-arrows">
+                    <img src="{% static "image/back-svgrepo-com1.svg" %}" alt="">
+                    <img src="{% static "image/go-svgrepo-com1.svg" %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

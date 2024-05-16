@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/style_new.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_new_catalog.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_information.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_contacts.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_catalog.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_sale.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_profile.css" %}">
+{% endblock %}
+
+{% block content %}
+<div class="container category-page">
+    {% include "goods/includes/goods_breadcrumbs.html" with breadcrumb_name="Мой профиль" %}
+    <div class="category-page-header">
+        <div class="page-header-left">
+            <h2 class="page-header-title">Мой профиль</h2>
+        </div>
+    </div>
+    <div class="profile">
+        <div class="profile-content">
+            <div class="page-info__menu">
+                <nav class="page-account__menu">
+                    <ul id="menu-information" class="page-info__menu">
+                        <li class="current_page_item page-info__menu-item">
+                            <a href="profile.html">Мой профиль</a>
+                        </li>
+                        <li class="page-info__menu-item">
+                            <a href="orders.html">Мои заказы</a>
+                        </li>
+                        <li class="page-info__menu-item">
+                            <a href="logout.html">Выйти</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="my_account_content">
+                <form class="billing_info_content" method="post">
+                    <img src="{% static "image/profile.jpg" %}" alt="avatar">
+                    <input type="file" id="profile_image_upload" name="profile_image" accept="image/*">
+                    <h3 class="billing_info_title">Личные данные</h3>
+                    <div class="billing_info-input_box">
+                        <label class="billing_info_label" for="billing_first_name">Имя</label>
+                        <input type="text" class="input-text" name="billing_first_name" id="billing_first_name"
+                            value="">
+                    </div>
+                    <div class="billing_info-input_box">
+                        <label class="billing_info_label" for="billing_last_name">Фамилия</label>
+                        <input type="text" class="input-text" name="billing_last_name" id="billing_last_name"
+                            value="">
+                    </div>
+                    <div class="billing_info-input_box">
+                        <label class="billing_info_label" for="billing_phone_number">Номер телефона</label>
+                        <input type="text" class="input-text" name="billing_phone_number" id="billing_phone_number"
+                            value="">
+                    </div>
+                    <div class="billing_info-input_box">
+                        <label class="billing_info_label" for="billing_email">Email</label>
+                        <input type="text" class="input-text" name="billing_email" id="billing_email" value="">
+                    </div>
+                    <div class="billing_info-additional_box">
+                        <div class="billing_info-input_box billing_info-additional_field">
+                            <label class="billing_info_label" for="user_gender">Пол</label>
+                            <div class="custom-select">
+                                <select name="user_gender" id="user_gender"
+                                    class="user_gender select2-hidden-accessible" aria-hidden="true">
+                                    <option value="мужской" selected>Мужской</option>
+                                    <option value="женский">Женский</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="billing_info-input_box billing_info-additional_field">
+                            <label class="billing_info_label" for="user_birthdate">Дата рождения</label>
+                            <input type="date" class="input-text" name="user_birthdate" id="user_birthdate"
+                                value="">
+                        </div>
+                    </div>
+                    <button type="submit" class="billing_info_save" name="save_billing_info"
+                        value="save">Сохранить</button>
+                </form>
+                <form class="delievery_info_content" method="post">
+                    <h3 class="billing_info_title">Адрес доставки</h3>
+                    <div class="billing_info-input_box">
+                        <label class="billing_info_label" for="delievery_info_city">Город</label>
+                        <input type="text" class="input-text" name="delievery_info_city" id="delievery_info_city"
+                            value="">
+                    </div>
+                    <div class="billing_info-input_box">
+                        <label class="billing_info_label" for="delievery_info_adress">Адрес</label>
+                        <input type="text" class="input-text" name="delievery_info_adress"
+                            id="delievery_info_adress" value="">
+                    </div>
+                    <div class="billing_info-input_box">
+                        <label class="billing_info_label" for="delievery_info_index">Индекс</label>
+                        <input type="text" class="input-text" name="delievery_info_index" id="delievery_info_index"
+                            value="">
+                    </div>
+                    <button type="submit" class="billing_info_save" name="save_billing_info"
+                        value="save">Сохранить</button>
+                </form>
+            </div>
+            <button onclick="scrollToTop()" id="scrollToTopButton">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function scrollToTop() {
+        const c = document.documentElement.scrollTop || document.body.scrollTop;
+        if (c > 0) {
+            window.requestAnimationFrame(scrollToTop);
+            window.scrollTo(0, c - c / 8);
+        }
+    }
+
+    window.onscroll = function () {
+        scrollFunction();
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("scrollToTopButton").style.display = "block";
+        } else {
+            document.getElementById("scrollToTopButton").style.display = "none";
+        }
+    }
+</script>
+{% endblock %}

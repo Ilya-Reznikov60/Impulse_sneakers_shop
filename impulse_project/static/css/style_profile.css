@@ -1,0 +1,158 @@
+.profile-content {
+    display: flex;
+    max-width: 1200px;
+    background-color: #fff;
+    align-items: flex-start;
+    margin-bottom: 208px;
+}
+
+.my_account_content {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 668px;
+    width: 100%;
+}
+
+.billing_info_content img {
+    max-width: 150px;
+    /* Устанавливаем максимальную ширину изображения */
+    height: auto;
+    /* Позволяет изображению сохранять пропорции */
+    margin-right: 20px;
+    /* Добавляем отступ справа от изображения */
+    margin-bottom: 20px;
+}
+
+#profile_image_upload {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+    height: 44px;
+    background: #ffffff;
+    border: 1px solid #e4e4e7;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    /* Добавляем отступ снизу */
+    cursor: pointer;
+}
+
+#profile_image_upload::file-selector-button {
+    background-color: black;
+    /* Цвет фона */
+    color: #ffffff;
+    /* Цвет текста */
+    border: none;
+    /* Убрать границу */
+    padding: 10px 20px;
+    /* Поля вокруг текста */
+    border-radius: 5px;
+    height: 42px;
+    cursor: pointer;
+}
+
+.billing_info_title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    color: #18181b;
+    margin-bottom: 24px;
+}
+
+.billing_info-input_box {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 24px;
+}
+
+.billing_info_label {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.billing_info-input_box input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 16px;
+    gap: 10px;
+    height: 44px;
+    background: #ffffff;
+    border: 1px solid #e4e4e7;
+    border-radius: 2px;
+}
+
+.billing_info-additional_box {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.billing_info-input_box.billing_info-additional_field {
+    width: 100%;
+}
+
+.custom-select {
+    position: relative;
+    width: 100%;
+}
+
+.custom-select select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 8px 16px;
+    height: 44px;
+    background: #ffffff;
+    border: 1px solid #e4e4e7;
+    border-radius: 2px;
+    width: 100%;
+}
+
+.custom-select::after {
+    content: '\25BC';
+    /* стрелочка вниз */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    /* чтобы стрелочка не перекрывала select */
+}
+
+#user_birthdate {
+    color: #bababf;
+}
+
+.billing_info_save {
+    padding: 14px 24px;
+    width: 207px;
+    height: 52px;
+    background: #18181b;
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 10px 0 48px 0;
+}
+
+@media screen and (max-width: 568px) {
+    .page-info__menu {
+        background-color: #f2f2f300;
+        width: 100%;
+        margin-bottom: 32px;
+    }
+
+    .profile-content {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,56 @@
+{% extends "auth_base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/style_login_version_two.css" %}">
+    <link rel="stylesheet" href="{% static "css/style_registration.css" %}">
+{% endblock %}
+
+{% block content %}
+<div class="form_container">
+    <div class="left">
+        <div class="login-container">
+            <h2>Добро пожаловать, новый пользователь!</h2>
+            <span class="subtitle">
+                Пожалуйста, заполните следующие поля для регистрации
+            </span>
+
+            <form class="login-form" action="">
+                <input type="text" placeholder="Имя" name="first_name">
+                <input type="text" placeholder="Фамилия" name="last_name">
+                <input type="email" placeholder="Email" name="email">
+                <input type="password" placeholder="Пароль" name="password">
+                <input type="password" placeholder="Подтверждение пароля" name="confirm_password">
+
+                <div class="actions-login">
+                    <div class="wrapper-login">
+                        <input type="checkbox" id="agree">
+                        <label for="agree">Я согласен с условиями использования</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="login_btn">
+                    Зарегистрироваться
+                </button>
+            </form>
+
+            <p class="signup_info">
+                Уже есть аккаунт? <a href="{% url "user:login" %}">Войти</a>
+            </p>
+            <p class="signup_home">
+                Домой: <a href="{% url "main:index" %}" class="home_link">Главная</a>
+            </p>
+        </div>
+    </div>
+    <div class="right_reg" style="background-image: url('{% static "image/freepik-export-20240430075000qG17.jpeg" %}')">
+        <div class="info-login">
+            <p>Присоединяйтесь к нам и получите доступ к миру моды. Наши возможности ждут вас!</p>
+            <h2>Impulse</h2>
+            <div class="login-arrows">
+                <img src="{% static "image/back-svgrepo-com1.svg" %}" alt="">
+                <img src="{% static "image/go-svgrepo-com1.svg" %}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
