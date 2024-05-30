@@ -25,7 +25,7 @@
                     <span></span>
                 </div>
 
-                <form class="login-form" action="">
+                <form class="login-form" action="{% url "user:login" %}" method="post">
                     <input type="email" placeholder="Email">
                     <input type="password" placeholder="Пароль">
 

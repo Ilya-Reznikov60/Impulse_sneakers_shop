@@ -16,26 +16,12 @@
     {% include "goods/includes/goods_breadcrumbs.html" with breadcrumb_name="Мой профиль" %}
     <div class="category-page-header">
         <div class="page-header-left">
-            <h2 class="page-header-title">Мой профиль</h2>
+            <h2 class="page-header-title">{{ profile_header }}</h2>
         </div>
     </div>
     <div class="profile">
         <div class="profile-content">
-            <div class="page-info__menu">
-                <nav class="page-account__menu">
-                    <ul id="menu-information" class="page-info__menu">
-                        <li class="current_page_item page-info__menu-item">
-                            <a href="profile.html">Мой профиль</a>
-                        </li>
-                        <li class="page-info__menu-item">
-                            <a href="orders.html">Мои заказы</a>
-                        </li>
-                        <li class="page-info__menu-item">
-                            <a href="logout.html">Выйти</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+            {% include "users/includes/profile_menu.html" %}
             <div class="my_account_content">
                 <form class="billing_info_content" method="post">
                     <img src="{% static "image/profile.jpg" %}" alt="avatar">

@@ -26,9 +26,17 @@ def profile(request):
     profile function.
     '''
     context = {
-        'title': 'Impulse - Мой профиль'
+        'title': 'Impulse - Мой профиль',
+        'profile_header': 'Мой профиль'
     }
     return render(request, 'users/profile.html', context)
+
+
+def my_orders(request):
+    '''
+    my_orders function.
+    '''
+    ...
 
 
 def logout(request):

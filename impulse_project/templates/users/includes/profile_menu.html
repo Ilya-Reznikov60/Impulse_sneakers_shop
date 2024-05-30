@@ -1,0 +1,33 @@
+<div class="page-info__menu">
+    <nav class="page-account__menu">
+        <ul id="menu-information" class="page-info__menu">
+            {% if request.path == '/user/profile/' %}
+                <li class="current_page_item page-info__menu-item">
+                    <a href="{% url "user:profile" %}">Мой профиль</a>
+                </li>
+            {% else %}
+                <li class="page-info__menu-item">
+                    <a href="{% url "user:profile" %}">Мой профиль</a>
+                </li>
+            {% endif %}
+            {% if request.path == '/user/my_orders/' %}
+                <li class="current_page_item page-info__menu-item">
+                    <a href="{% url "user:my_orders" %}">Мои заказы</a>
+                </li>
+            {% else %}
+                <li class="page-info__menu-item">
+                    <a href="{% url "user:my_orders" %}">Мои заказы</a>
+                </li>
+            {% endif %}
+            {% if request.path == '/user/logout/' %}
+                <li class="current_page_item page-info__menu-item">
+                    <a href="{% url "user:logout" %}">Выйти</a>
+                </li>
+            {% else %}
+                <li class="page-info__menu-item">
+                    <a href="{% url "user:logout" %}">Выйти</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
