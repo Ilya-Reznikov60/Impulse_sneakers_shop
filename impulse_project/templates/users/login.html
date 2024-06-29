@@ -25,9 +25,16 @@
                     <span></span>
                 </div>
 
-                <form class="login-form" action="{% url "user:login" %}" method="post">
-                    <input type="email" placeholder="Email">
-                    <input type="password" placeholder="Пароль">
+                <form class="login-form" action="{% url "users:login" %}" method="post">
+                    {% csrf_token %}
+
+                    {% comment "" %}
+                    {{ form.username }}
+                    {{ form.password }}
+                    {% endcomment %}
+                    
+                    <input type="email" placeholder="Email" value="{% if form.username.value %}{{ form.username.value }}{% endif %}" name="username">
+                    <input type="password" placeholder="Пароль" name="password">
 
 
                     <div class="actions-login">
@@ -41,10 +48,11 @@
                     <button type="submit" class="login_btn">
                         Войти
                     </button>
+
                 </form>
 
                 <p class="signup_info">
-                    Ещё нет аккаунта? <a href="{% url "user:registration" %}">Зарегистрироваться</a>
+                    Ещё нет аккаунта? <a href="{% url "users:registration" %}">Зарегистрироваться</a>
                 </p>
                 <p class="signup_home">
                     Домой: <a href="{% url "main:index" %}" class="home_link">Главная</a>
