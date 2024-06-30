@@ -15,12 +15,48 @@
                 Пожалуйста, заполните следующие поля для регистрации
             </span>
 
-            <form class="login-form" action="">
-                <input type="text" placeholder="Имя" name="first_name">
-                <input type="text" placeholder="Фамилия" name="last_name">
-                <input type="email" placeholder="Email" name="email">
-                <input type="password" placeholder="Пароль" name="password">
-                <input type="password" placeholder="Подтверждение пароля" name="confirm_password">
+            <form class="login-form" action="{% url "users:registration" %}" method="post">
+                {% csrf_token %}
+                <div class="reg">
+                    <input type="text" placeholder="Имя" name="first_name" id="id_first_name"
+                    value="{% if form.first_name.value %}{{ form.first_name.value }}{% endif %}"
+                    >
+                    {% if form.first_name.errors %}
+                        <div class="error_container">{{form.first_name.errors}}</div>
+                    {% endif %}
+                </div>
+                <div class="reg">
+                    <input type="text" placeholder="Фамилия" name="last_name" id="id_last_name"
+                    value="{% if form.last_name.value %}{{ form.last_name.value }}{% endif %}"
+                    >
+                    {% if form.last_name.errors %}
+                        <div class="error_container">{{form.last_name.errors}}</div>
+                    {% endif %}
+                </div>
+                <div class="reg">
+                    <input type="email" placeholder="Email" name="username" id="id_username"
+                    value="{% if form.username.value %}{{ form.username.value }}{% endif %}"
+                    >
+                    {% if form.username.errors %}
+                        <div class="error_container">{{form.username.errors}}</div>
+                    {% endif %}
+                </div>
+                <div class="reg">
+                    <input type="password" placeholder="Пароль" name="password1" id="id_password1"
+                    value="{% if form.password1.value %}{{ form.password1.value }}{% endif %}"
+                    >
+                    {% if form.password1.errors %}
+                        <div class="error_container">{{form.password1.errors}}</div>
+                    {% endif %}
+                </div>
+                <div class="reg">
+                    <input type="password" placeholder="Подтверждение пароля" name="password2" id="id_password2"
+                    value="{% if form.password2.value %}{{ form.password2.value }}{% endif %}"
+                    >
+                    {% if form.password2.errors %}
+                        <div class="error_container">{{form.password2.errors}}</div>
+                    {% endif %}
+                </div>
 
                 <div class="actions-login">
                     <div class="wrapper-login">
@@ -35,7 +71,7 @@
             </form>
 
             <p class="signup_info">
-                Уже есть аккаунт? <a href="{% url "user:login" %}">Войти</a>
+                Уже есть аккаунт? <a href="{% url "users:login" %}">Войти</a>
             </p>
             <p class="signup_home">
                 Домой: <a href="{% url "main:index" %}" class="home_link">Главная</a>

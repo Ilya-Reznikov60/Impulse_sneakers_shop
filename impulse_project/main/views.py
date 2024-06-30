@@ -10,6 +10,7 @@ def index(request):
     '''
     Index function
     '''
+
     categories = Category.objects.all()
     goods = Product.objects.all()
     news = News.objects.all()
