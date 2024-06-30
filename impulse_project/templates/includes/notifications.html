@@ -1,0 +1,7 @@
+{% load static %}
+
+{% if form.non_field_errors %}
+        <div class="error_container">
+            <p class="error_messages">{{ form.non_field_errors }}</p>
+        </div>
+{% endif %}

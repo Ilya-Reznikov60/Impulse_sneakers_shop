@@ -32,6 +32,8 @@
                     {{ form.username }}
                     {{ form.password }}
                     {% endcomment %}
+
+                    {% include "includes/notifications.html" %}
                     
                     <input type="email" placeholder="Email" value="{% if form.username.value %}{{ form.username.value }}{% endif %}" name="username">
                     <input type="password" placeholder="Пароль" name="password">
