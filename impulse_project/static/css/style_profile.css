@@ -23,7 +23,7 @@
     margin-bottom: 20px;
 }
 
-#profile_image_upload {
+#id_image {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -38,7 +38,7 @@
     cursor: pointer;
 }
 
-#profile_image_upload::file-selector-button {
+#id_image::file-selector-button {
     background-color: black;
     /* Цвет фона */
     color: #ffffff;
@@ -128,7 +128,7 @@
     /* чтобы стрелочка не перекрывала select */
 }
 
-#user_birthdate {
+#date_of_birth {
     color: #bababf;
 }
 
@@ -143,6 +143,7 @@
     font-size: 16px;
     line-height: 24px;
     margin: 10px 0 48px 0;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 568px) {

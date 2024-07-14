@@ -23,65 +23,112 @@
         <div class="profile-content">
             {% include "users/includes/profile_menu.html" %}
             <div class="my_account_content">
-                <form class="billing_info_content" method="post">
-                    <img src="{% static "image/profile.jpg" %}" alt="avatar">
-                    <input type="file" id="profile_image_upload" name="profile_image" accept="image/*">
+                <form class="billing_info_content" action="{% url "users:profile" %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% if user.image %}
+                        <img src="{{ user.image.url }}" alt="avatar">
+                    {% else %}
+                        <img src="{% static "image/profile.jpg" %}" alt="avatar">
+                    {% endif %}
+                    <input type="file" id="id_image" name="image" accept="image/*">
+                    {% if form.image.errors %}
+                        <div class="error_container">{{form.image.errors}}</div>
+                    {% endif %}
                     <h3 class="billing_info_title">Личные данные</h3>
                     <div class="billing_info-input_box">
-                        <label class="billing_info_label" for="billing_first_name">Имя</label>
-                        <input type="text" class="input-text" name="billing_first_name" id="billing_first_name"
-                            value="">
+                        <label class="billing_info_label" for="id_first_name">Имя</label>
+                        <input type="text" class="input-text" name="first_name" id="id_first_name"
+                            value="{{ form.first_name.value }}"
+                            >
+                            {% if form.first_name.errors %}
+                                <div class="error_container">{{form.first_name.errors}}</div>
+                            {% endif %}
                     </div>
                     <div class="billing_info-input_box">
-                        <label class="billing_info_label" for="billing_last_name">Фамилия</label>
-                        <input type="text" class="input-text" name="billing_last_name" id="billing_last_name"
-                            value="">
+                        <label class="billing_info_label" for="id_last_name">Фамилия</label>
+                        <input type="text" class="input-text" name="last_name" id="id_last_name"
+                            value="{{ form.last_name.value }}"
+                            >
+                            {% if form.last_name.errors %}
+                                <div class="error_container">{{form.last_name.errors}}</div>
+                            {% endif %}
                     </div>
                     <div class="billing_info-input_box">
-                        <label class="billing_info_label" for="billing_phone_number">Номер телефона</label>
-                        <input type="text" class="input-text" name="billing_phone_number" id="billing_phone_number"
-                            value="">
+                        <label class="billing_info_label" for="id_phone_number">Номер телефона</label>
+                        <input type="text" class="input-text" name="phone_number" id="id_phone_number"
+                            value="{% if form.phone_number.value %}{{ form.phone_number.value }}{% endif %}"
+                            >
+                            {% if form.phone_number.errors %}
+                                <div class="error_container">{{form.phone_number.errors}}</div>
+                            {% endif %}
                     </div>
                     <div class="billing_info-input_box">
-                        <label class="billing_info_label" for="billing_email">Email</label>
-                        <input type="text" class="input-text" name="billing_email" id="billing_email" value="">
+                        <label class="billing_info_label" for="id_username">Email</label>
+                        <input type="text" class="input-text" name="username" id="id_username"
+                            value="{{ form.username.value }}"
+                            >
+                            {% if form.username.errors %}
+                                <div class="error_container">{{form.username.errors}}</div>
+                            {% endif %}
                     </div>
                     <div class="billing_info-additional_box">
                         <div class="billing_info-input_box billing_info-additional_field">
-                            <label class="billing_info_label" for="user_gender">Пол</label>
+                            <label class="billing_info_label" for="id_gender">Пол</label>
                             <div class="custom-select">
-                                <select name="user_gender" id="user_gender"
-                                    class="user_gender select2-hidden-accessible" aria-hidden="true">
+                                <select name="gender" id="id_gender"
+                                    value="{% if form.gender.value %}{{ form.gender.value }}{% endif %}"
+                                    class="user_gender select2-hidden-accessible" aria-hidden="true"
+                                    >
+                                    {% if form.gender.errors %}
+                                        <div class="error_container">{{form.gender.errors}}</div>
+                                    {% endif %}
                                     <option value="мужской" selected>Мужской</option>
                                     <option value="женский">Женский</option>
                                 </select>
                             </div>
                         </div>
                         <div class="billing_info-input_box billing_info-additional_field">
-                            <label class="billing_info_label" for="user_birthdate">Дата рождения</label>
-                            <input type="date" class="input-text" name="user_birthdate" id="user_birthdate"
-                                value="">
+                            <label class="billing_info_label" for="id_date_of_birth">Дата рождения</label>
+                            <input type="date" class="input-text" name="date_of_birth" id="id_date_of_birth"
+                                value="{% if form.date_of_birth.value %}{{ form.date_of_birth.value }}{% endif %}"
+                                >
+                                {% if form.date_of_birth.errors %}
+                                    <div class="error_container">{{form.date_of_birth.errors}}</div>
+                                {% endif %}
                         </div>
                     </div>
                     <button type="submit" class="billing_info_save" name="save_billing_info"
                         value="save">Сохранить</button>
                 </form>
-                <form class="delievery_info_content" method="post">
+                <form class="delievery_info_content" action="{% url "users:profile" %}" method="post">
+                    {% csrf_token %}
                     <h3 class="billing_info_title">Адрес доставки</h3>
                     <div class="billing_info-input_box">
-                        <label class="billing_info_label" for="delievery_info_city">Город</label>
-                        <input type="text" class="input-text" name="delievery_info_city" id="delievery_info_city"
-                            value="">
+                        <label class="billing_info_label" for="id_city">Город</label>
+                        <input type="text" class="input-text" name="city" id="id_city"
+                            value="{% if form.city.value %}{{ form.city.value }}{% endif %}"
+                            >
+                            {% if form.city.errors %}
+                                <div class="error_container">{{form.city.errors}}</div>
+                            {% endif %}
                     </div>
                     <div class="billing_info-input_box">
-                        <label class="billing_info_label" for="delievery_info_adress">Адрес</label>
-                        <input type="text" class="input-text" name="delievery_info_adress"
-                            id="delievery_info_adress" value="">
+                        <label class="billing_info_label" for="id_address">Адрес</label>
+                        <input type="text" class="input-text" name="address"
+                            id="id_address" value="{% if form.address.value %}{{ form.address.value }}{% endif %}"
+                            >
+                            {% if form.address.errors %}
+                                <div class="error_container">{{form.address.errors}}</div>
+                            {% endif %}
                     </div>
                     <div class="billing_info-input_box">
-                        <label class="billing_info_label" for="delievery_info_index">Индекс</label>
-                        <input type="text" class="input-text" name="delievery_info_index" id="delievery_info_index"
-                            value="">
+                        <label class="billing_info_label" for="id_postal_code">Индекс</label>
+                        <input type="text" class="input-text" name="postal_code" id="id_postal_code"
+                            value="{% if form.postal_code.value %}{{ form.postal_code.value }}{% endif %}"
+                            >
+                            {% if form.postal_code.errors %}
+                                <div class="error_container">{{form.postal_code.errors}}</div>
+                            {% endif %}
                     </div>
                     <button type="submit" class="billing_info_save" name="save_billing_info"
                         value="save">Сохранить</button>
