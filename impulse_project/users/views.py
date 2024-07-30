@@ -4,7 +4,9 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import reverse
 
-from users.forms import UserLoginForm, UserRegistrationForm, ProfileForm
+from users.forms import (
+    UserLoginForm, UserRegistrationForm, ProfileForm
+)
 
 
 def login(request):
